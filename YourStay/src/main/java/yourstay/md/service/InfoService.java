@@ -1,7 +1,10 @@
 package yourstay.md.service;
 
-import yourstay.md.domain.Acommodation;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import yourstay.md.domain.Accommodation;
 
 public interface InfoService {
-	Acommodation selectAcommodation(long aid);
+	Accommodation selectAccommodation(long aid);
 }

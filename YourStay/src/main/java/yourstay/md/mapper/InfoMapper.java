@@ -1,9 +1,9 @@
 package yourstay.md.mapper;
 
-import yourstay.md.domain.Acommodation;
+import yourstay.md.domain.Accommodation;
 
 public interface InfoMapper {
 	
-	Acommodation selectByaid(long aid);
+	Accommodation selectByaid(long aid);
 
 }

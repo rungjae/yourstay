@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>soo.md</groupId>
 	<artifactId>controller</artifactId>
-	<name>Sp04</name>
+	<name>YourStay</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
