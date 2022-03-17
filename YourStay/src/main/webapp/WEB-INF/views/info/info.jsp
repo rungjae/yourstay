@@ -45,28 +45,28 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <body>
-<!-- 상단 -->
-		<header class="blog-header py-3" style="margin-bottom: 5%;">
-			<div
-				class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 pt-1"></div>
-				<div class="col-4 text-center">
-					<a class="blog-header-logo text-dark" href="#">YourTrip</a>
-				</div>
-				<div class="col-4 d-flex justify-content-end align-items-center">
-					<a class="link-secondary" href="#" aria-label="Search"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="none" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-							viewBox="0 0 24 24">
+	<!-- 상단 -->
+	<header class="blog-header py-3" style="margin-bottom: 5%;">
+		<div
+			class="row flex-nowrap justify-content-between align-items-center">
+			<div class="col-4 pt-1"></div>
+			<div class="col-4 text-center">
+				<a class="blog-header-logo text-dark" href="#">YourTrip</a>
+			</div>
+			<div class="col-4 d-flex justify-content-end align-items-center">
+				<a class="link-secondary" href="#" aria-label="Search"> <svg
+						xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+						fill="none" stroke="currentColor" stroke-linecap="round"
+						stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+						viewBox="0 0 24 24">
 						<title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
 						<path d="M21 21l-5.2-5.2" /></svg>
-					</a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
-						up</a>
-				</div>
+				</a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
+					up</a>
 			</div>
-		</header>
-		
+		</div>
+	</header>
+
 	<main class="container">
 		<!-- 제목 -->
 		<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -211,6 +211,63 @@
 						숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개
 						숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개 숙소 소개</p>
 
+					<hr>
+					<!-- 지도 -->
+					<h2 class="fw-bold">위치</h2>
+					<div class="map-area">
+						<div id="map" style="width: 100%; height: 300px;"></div>
+						<script type="text/javascript"
+							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356"></script>
+						<script>
+							var container = document.getElementById('map');
+							var options = {
+								center : new kakao.maps.LatLng(37.478890,
+										126.878650),
+								level : 3
+							};
+
+							var map = new kakao.maps.Map(container, options);
+
+							var data = [
+									[ 37.478890, 126.878650,
+											'<div style="padding:5px">내용</div>' ],
+									[ 37.47796194357405, 126.8805951377817,
+											'<div style="padding:5px">내용</div>' ],
+									[ 37.481417597740965, 126.87617383635731,
+											'<div style="padding:5px">내용</div>' ]
+
+							]
+
+							for (var i = 0; i < data.length; i++) {
+
+								// 마커가 표시될 위치입니다 
+								var markerPosition = new kakao.maps.LatLng(
+										37.478890, 126.878650);
+
+								// 마커를 생성합니다
+								var marker = new kakao.maps.Marker({
+									position : markerPosition
+								});
+
+								// 마커가 지도 위에 표시되도록 설정합니다
+								marker.setMap(map);
+
+								var iwContent = '<div style="padding:5px;">숙소 이름<br><a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">카카오맵 길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+								iwPosition = new kakao.maps.LatLng(data[i][0],
+										data[i][1]); //인포윈도우 표시 위치입니다
+
+								// 인포윈도우를 생성합니다
+								var infowindow = new kakao.maps.InfoWindow({
+									position : iwPosition,
+									content : data[i][2]
+								});
+
+								// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+								infowindow.open(map, marker);
+
+							}
+						</script>
+					</div>
 					<hr>
 					<!-- 후기게시판 -->
 					<h2 class="fw-bold">후기</h2>
@@ -1234,7 +1291,7 @@
 					<div class='col-md-3 col-xs-4'>
 						<div class="form-group">
 							<div class="input-group date" id="datetimepicker1"
-								data-target-input="nearest">
+								data-target-input="nearest" style="width:400%!important;">
 								<input type="text" class="form-control datetimepicker-input"
 									data-target="#datetimepicker1" placeholder="Start-date"
 									onkeyup="invalid()" id="startdate" name="startdate">
@@ -1250,7 +1307,7 @@
 					<div class='col-md-3 col-xs-4'>
 						<div class="form-group">
 							<div class="input-group date" id="datetimepicker2"
-								data-target-input="nearest">
+								data-target-input="nearest" style="width:400%!important;">
 								<input type="text" class="form-control datetimepicker-input"
 									data-target="#datetimepicker2" placeholder="Deadline"
 									onkeyup="invalid()" id="deadline" name="deadline">

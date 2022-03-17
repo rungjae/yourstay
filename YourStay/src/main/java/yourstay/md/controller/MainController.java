@@ -12,5 +12,10 @@ public class MainController {
       
       return "index";
    }
+//   @RequestMapping("list")
+//   public String list() {
+//      
+//      return "listTest";
+//   }
    
 }

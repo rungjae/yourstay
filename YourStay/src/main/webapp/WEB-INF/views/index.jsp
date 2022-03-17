@@ -8,14 +8,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author"
-	content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+   content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
 <!-- bootstrap-css -->
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"
-	media="all" />
+   media="all" />
 <script src="///js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
@@ -27,213 +27,213 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
+   rel="stylesheet">
 
 <!-- DataTimePicker template 
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script type="text/javascript"
-	src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />-->
+   href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 <link rel="stylesheet"
-	href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+   href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />-->
 
 <!-- <script type="text/javascript">
-	$(function() {
-		$("#datetimepicker1").datetimepicker({
-			format : 'L'
-		});
-		$("#datetimepicker2").datetimepicker({
-			format : 'L'
-		});
-		$("#datetimepicker1").on("change.datetimepicker", function(e) {
-			$('#datetimepicker2').datetimepicker('minDate', e.date);
-		});
-		$("#datetimepicker2").on("change.datetimepicker", function(e) {
-			$('#datetimepicker1').datetimepicker('maxDate', e.date);
-		});
-	});
+   $(function() {
+      $("#datetimepicker1").datetimepicker({
+         format : 'L'
+      });
+      $("#datetimepicker2").datetimepicker({
+         format : 'L'
+      });
+      $("#datetimepicker1").on("change.datetimepicker", function(e) {
+         $('#datetimepicker2').datetimepicker('minDate', e.date);
+      });
+      $("#datetimepicker2").on("change.datetimepicker", function(e) {
+         $('#datetimepicker1').datetimepicker('maxDate', e.date);
+      });
+   });
 </script> -->
 
 <script>
-	$(document)
-			.ready(
-					function() {
-						var checkShow = false;
-						$("#searchSubmitBtn")
-								.click(
-										function() {
-											//alert($("#city").val() + " , " + $("#datepicker1").val() + " ~ " + $("#datepicker2").val() +" , "+$("#personnel option:selected").val());
-											if ($("#aloc").val() == "모든 위치"
-													|| $("#aloc").val() == "") {
-												alert("위치를 입력해 주세요.");
-											} else if ($("#datepicker1").val() == "모든 날짜"
-													|| $("#datepicker1").val() == "") {
-												alert("출발 날짜를 입력해 주세요.");
-											} else if ($("#datepicker2").val() == "모든 날짜"
-													|| $("#datepicker2").val() == "") {
-												alert("도착 날짜를 입력해 주세요.");
-											} else {
-												location.href = "searchInListFromMainGet.do?aloc="
-														+ $("#aloc").val()
-														+ "&startdate="
-														+ $("#datepicker1")
-																.val()
-														+ "&deadline="
-														+ $("#datepicker2")
-																.val()
-														+ "&person="
-														+ $("#personnel").val();
-											}
-										});
-						$("#datepicker1").datepicker({
-							dateFormat : 'yy-mm-dd'
-						});
-						$("#datepicker2").datepicker({
-							dateFormat : 'yy-mm-dd'
-						});
-						$("#rollDown").hide();
-						$("#tempImg").click(function() {
-							if (checkShow == false) {
-								$("#rollDown").show();
-								checkShow = true;
-							} else {
-								$("#rollDown").hide();
-								checkShow = false;
-							}
-						});
-						$("#logo").click(function() {
-							window.location = "index.jsp";
-						});
-					});
+   $(document)
+         .ready(
+               function() {
+                  var checkShow = false;
+                  $("#searchSubmitBtn")
+                        .click(
+                              function() {
+                                 //alert($("#city").val() + " , " + $("#datepicker1").val() + " ~ " + $("#datepicker2").val() +" , "+$("#personnel option:selected").val());
+                                 if ($("#aloc").val() == "모든 위치"
+                                       || $("#aloc").val() == "") {
+                                    alert("위치를 입력해 주세요.");
+                                 } else if ($("#datepicker1").val() == "모든 날짜"
+                                       || $("#datepicker1").val() == "") {
+                                    alert("출발 날짜를 입력해 주세요.");
+                                 } else if ($("#datepicker2").val() == "모든 날짜"
+                                       || $("#datepicker2").val() == "") {
+                                    alert("도착 날짜를 입력해 주세요.");
+                                 } else {
+                                    location.href = "searchInListFromMainGet.do?aloc="
+                                          + $("#aloc").val()
+                                          + "&startdate="
+                                          + $("#datepicker1")
+                                                .val()
+                                          + "&deadline="
+                                          + $("#datepicker2")
+                                                .val()
+                                          + "&person="
+                                          + $("#personnel").val();
+                                 }
+                              });
+                  $("#datepicker1").datepicker({
+                     dateFormat : 'yy-mm-dd'
+                  });
+                  $("#datepicker2").datepicker({
+                     dateFormat : 'yy-mm-dd'
+                  });
+                  $("#rollDown").hide();
+                  $("#tempImg").click(function() {
+                     if (checkShow == false) {
+                        $("#rollDown").show();
+                        checkShow = true;
+                     } else {
+                        $("#rollDown").hide();
+                        checkShow = false;
+                     }
+                  });
+                  $("#logo").click(function() {
+                     window.location = "index.jsp";
+                  });
+               });
 </script>
 <!--// bootstrap-css -->
 <!-- css -->
 <link rel="stylesheet" href="../css/blog.css" type="text/css"
-	media="all" />
+   media="all" />
 </head>
 <style>
 .bd-placeholder-img {
-	font-size: 1.125rem;
-	text-anchor: middle;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	user-select: none;
+   font-size: 1.125rem;
+   text-anchor: middle;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
 }
 
 @media ( min-width : 768px) {
-	.bd-placeholder-img-lg {
-		font-size: 3.5rem;
-	}
+   .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+   }
 }
 </style>
 <body>
 
-	<div class="container">
-		<header class="blog-header py-3">
-			<div
-				class="row flex-nowrap justify-content-between align-items-center">
-				<div class="col-4 pt-1">
-					<a class="link-secondary" href="#">Subscribe</a>
-				</div>
-				<div class="col-4 text-center">
-					<a class="blog-header-logo text-dark" href="#">Large</a>
-				</div>
-				<div class="col-4 d-flex justify-content-end align-items-center">
-					<a class="link-secondary" href="#" aria-label="Search"> <svg
-							xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-							fill="none" stroke="currentColor" stroke-linecap="round"
-							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-							viewBox="0 0 24 24">
+   <div class="container">
+      <header class="blog-header py-3">
+         <div
+            class="row flex-nowrap justify-content-between align-items-center">
+            <div class="col-4 pt-1">
+               <a class="link-secondary" href="#">Subscribe</a>
+            </div>
+            <div class="col-4 text-center">
+               <a class="blog-header-logo text-dark" href="#">Large</a>
+            </div>
+            <div class="col-4 d-flex justify-content-end align-items-center">
+               <a class="link-secondary" href="#" aria-label="Search"> <svg
+                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                     fill="none" stroke="currentColor" stroke-linecap="round"
+                     stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                     viewBox="0 0 24 24">
                      <title>Search</title><circle cx="10.5" cy="10.5"
-								r="7.5" />
+                        r="7.5" />
                      <path d="M21 21l-5.2-5.2" /></svg>
-					</a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
-						up</a>
-				</div>
-			</div>
-		</header>
+               </a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
+                  up</a>
+            </div>
+         </div>
+      </header>
 
-		<div class="nav-scroller py-1 mb-2">
-			<nav class="nav d-flex justify-content-between">
-				<a class="p-2 link-secondary" href="#">World</a> <a
-					class="p-2 link-secondary" href="#">U.S.</a> <a
-					class="p-2 link-secondary" href="#">Technology</a> <a
-					class="p-2 link-secondary" href="#">Design</a> <a
-					class="p-2 link-secondary" href="#">Culture</a> <a
-					class="p-2 link-secondary" href="#">Business</a> <a
-					class="p-2 link-secondary" href="#">Politics</a> <a
-					class="p-2 link-secondary" href="#">Opinion</a> <a
-					class="p-2 link-secondary" href="#">Science</a> <a
-					class="p-2 link-secondary" href="#">Health</a> <a
-					class="p-2 link-secondary" href="#">Style</a> <a
-					class="p-2 link-secondary" href="#">Travel</a>
-			</nav>
-		</div>
-	</div>
+      <div class="nav-scroller py-1 mb-2">
+         <nav class="nav d-flex justify-content-between">
+            <a class="p-2 link-secondary" href="#">World</a> <a
+               class="p-2 link-secondary" href="#">U.S.</a> <a
+               class="p-2 link-secondary" href="#">Technology</a> <a
+               class="p-2 link-secondary" href="#">Design</a> <a
+               class="p-2 link-secondary" href="#">Culture</a> <a
+               class="p-2 link-secondary" href="#">Business</a> <a
+               class="p-2 link-secondary" href="#">Politics</a> <a
+               class="p-2 link-secondary" href="#">Opinion</a> <a
+               class="p-2 link-secondary" href="#">Science</a> <a
+               class="p-2 link-secondary" href="#">Health</a> <a
+               class="p-2 link-secondary" href="#">Style</a> <a
+               class="p-2 link-secondary" href="#">Travel</a>
+         </nav>
+      </div>
+   </div>
 
-	<main class="container">
-		<div id="searchBar">
-			<form id="seatrchForm">
-				<div id="search" class="radius">
-					<p id="indexH1">YourStay 숙소 찾기</p>
-					<div id="cityDiv">
-						<p class="searchFont">위치</p>
-						<input type="text" id="aloc" name="aloc" value="모든 위치">
-					</div>
-					<div id="datepickerDiv" />
-					<div class='col-md-3 col-xs-4'>
-						<div class="form-group">
-							<div class="input-group date" id="datetimepicker1"
-								data-target-input="nearest">
-								<input type="text" id="datepicker1" name="startdate"
-									value="모든 날짜">
-								<div class="input-group-append" data-target="#datetimepicker1"
-									data-toggle="datetimepicker">
-									<div class="input-group-text">
-										<i class="fa fa-calendar"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class='col-md-3 col-xs-4'>
-						<div class="form-group">
-							<div class="input-group date" id="datetimepicker2"
-								data-target-input="nearest">
-								<input type="text" id="datepicker2" name="deadline"
-									value="모든 날짜">
-								<div class="input-group-append" data-target="#datetimepicker2"
-									data-toggle="datetimepicker">
-									<div class="input-group-text">
-										<i class="fa fa-calendar"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="personnelDiv">
-					<p class="searchFont">인원</p>
-					<select id="personnel" name="person">
-						<option value=1>인원 1명</option>
-						<option value=2>인원 2명</option>
-						<option value=3>인원 3명</option>
-						<option value=4>인원 4명</option>
-						<option value=5>인원 5명</option>
-						<option value=6>인원 6명</option>
-					</select>
-				</div>
-				<input type="button" id="searchSubmitBtn" value="검색"
-					style="cursor: pointer;">
-		</div>
-		</form>
-		</div>
-		<div background-repeat:no-repeat; width: 100%;"></div>
+   <main class="container">
+      <div id="searchBar">
+         <form id="seatrchForm">
+            <div id="search" class="radius">
+               <p id="indexH1">YourStay 숙소 찾기</p>
+               <div id="cityDiv">
+                  <p class="searchFont">위치</p>
+                  <input type="text" id="aloc" name="aloc" placeholder="지역명을 입력해주세요." style="width: 60%;height: 50%;border: none;">
+               </div>
+               <div id="datepickerDiv" />
+               <div class='col-md-3 col-xs-4'>
+                  <div class="form-group">
+                     <div class="input-group date" id="datetimepicker1"
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker1" name="startdate"
+                           placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
+                        <div class="input-group-append" data-target="#datetimepicker1"
+                           data-toggle="datetimepicker">
+                           <div class="input-group-text">
+                              <i class="fa fa-calendar"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class='col-md-3 col-xs-4'>
+                  <div class="form-group">
+                     <div class="input-group date" id="datetimepicker2"
+                        data-target-input="nearest">
+                        <input type="text" id="datepicker2" name="deadline"
+                           placeholder="날짜를 선택해주세요." style="margin-left: 7px!important;">
+                        <div class="input-group-append" data-target="#datetimepicker2"
+                           data-toggle="datetimepicker">
+                           <div class="input-group-text">
+                              <i class="fa fa-calendar"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div id="personnelDiv">
+               <p class="searchFont">인원</p>
+               <select id="personnel" name="person">
+                  <option value=1>인원 1명</option>
+                  <option value=2>인원 2명</option>
+                  <option value=3>인원 3명</option>
+                  <option value=4>인원 4명</option>
+                  <option value=5>인원 5명</option>
+                  <option value=6>인원 6명</option>
+               </select>
+            </div>
+            <input type="button" id="searchSubmitBtn" value="검색"
+               style="cursor: pointer;">
+      </div>
+      </form>
+      </div>
+      <div background-repeat:no-repeat; width: 100%;"></div>
    <!--   <div class=" mb-4 text-white flower-bg">
     <div class="col-md-6 px-0">
       <h1 class="display-4 fst-italic"></h1>
@@ -252,7 +252,7 @@
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/river.jpg"
-						alt="Card image cap">
+                  alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -263,7 +263,7 @@
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/river.jpg"
-						alt="Card image cap">
+                  alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -274,7 +274,7 @@
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/river.jpg"
-						alt="Card image cap">
+                  alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -285,7 +285,7 @@
       <div class="col-md-6">
          <div class="card" style="width: 18rem;">
            <img class="card-img-top" src="../images/river.jpg"
-						alt="Card image cap">
+                  alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -296,21 +296,21 @@
    </div>
    <!-- 슬라이드 -->
       <div id="carouselExampleCaptions" class="carousel slide"
-			data-bs-ride="carousel">
+         data-bs-ride="carousel">
          <div class="carousel-indicators">
             <button type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-					class="active" aria-current="true" aria-label="Slide 1"></button>
+               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+               class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-					aria-label="Slide 2"></button>
+               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+               aria-label="Slide 2"></button>
             <button type="button"
-					data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-					aria-label="Slide 3"></button>
+               data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+               aria-label="Slide 3"></button>
          </div>
          <div class="carousel-inner">
             <div class="carousel-item active"
-					style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
+               style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
                <div class="carousel-caption">
                   <h5>First slide label</h5>
                   <p>Some representative placeholder content for the first
@@ -318,7 +318,7 @@
                </div>
             </div>
             <div class="carousel-item"
-					style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
+               style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
                <div class="carousel-caption">
                   <h5>Second slide label</h5>
                   <p>Some representative placeholder content for the second
@@ -326,7 +326,7 @@
                </div>
             </div>
             <div class="carousel-item"
-					style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
+               style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
                <div class="carousel-caption">
                   <h5>Third slide label</h5>
                   <p>Some representative placeholder content for the third
@@ -335,34 +335,34 @@
             </div>
          </div>
          <button class="carousel-control-prev" type="button"
-				data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
          </button>
          <button class="carousel-control-next" type="button"
-				data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
          </button>
       </div>
    </main>
-	<!-- 푸터 -->
-	<div class="container">
-		<footer class="py-3 my-4">
-			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Home</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Features</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">Pricing</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">FAQs</a></li>
-				<li class="nav-item"><a href="#"
-					class="nav-link px-2 text-muted">About</a></li>
-			</ul>
-			<p class="text-center text-muted">© 2021 Company, Inc</p>
-		</footer>
-	</div>
+   <!-- 푸터 -->
+   <div class="container">
+      <footer class="py-3 my-4">
+         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Features</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">Pricing</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="#"
+               class="nav-link px-2 text-muted">About</a></li>
+         </ul>
+         <p class="text-center text-muted">© 2021 Company, Inc</p>
+      </footer>
+   </div>
 </body>
 </html>
