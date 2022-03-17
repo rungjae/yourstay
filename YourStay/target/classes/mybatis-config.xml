@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Accommodation" type="yourstay.md.domain.Accommodation"/>
-		<typeAlias alias="MemberVO" type="yourstay.md.domain.MemberVO"/>
+		<typeAlias alias ="MemberVO" type="yourstay.md.domain.MemberVO"/>
 	</typeAliases>
 </configuration>

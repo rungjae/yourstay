@@ -3,7 +3,6 @@ package yourstay.md.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import yourstay.md.domain.Accommodation;
 
 @Data
 @NoArgsConstructor

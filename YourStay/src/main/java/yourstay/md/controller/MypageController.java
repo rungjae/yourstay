@@ -25,4 +25,10 @@ public class MypageController {
         mv.setViewName("mypage/wishlist");
         return mv;
     }
+	@GetMapping(value="/review")
+    public ModelAndView checkBook(ModelAndView mv){
+        log.info("MypageController -> checkBook 요청");
+        mv.setViewName("mypage/review");
+        return mv;
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import yourstay.md.domain.Accommodation;
+
 @Primary
 @Repository
 public class SearchMapperImpl implements SearchMapper {

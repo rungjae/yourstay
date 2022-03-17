@@ -6,6 +6,7 @@
 <title>YourTrip</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- bootstrap-css -->
 <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 <link rel="stylesheet" href="../css/features.css" type="text/css" media="all" />
@@ -14,6 +15,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+<%
+   String memail = (String) session.getAttribute("memail");
+%>
 </head>
 <style>
 h2, h3,p {
@@ -34,11 +38,31 @@ h2, h3,p {
           <a class="link-secondary" href="#" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
           </a>
-          <a class="btn btn-sm btn-outline-secondary" href="../login/loginPage">Sign up</a>
-        </div>
+          <c:choose>
+         <c:when test="${msg =='failure'}">
+        <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+        </c:when> 
+         <c:when test="${msg == null}"> <!-- 로그인X -->
+         
+         <% 
+            if(memail == null){
+         %>
+           <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+          <%
+            }else{
+         %>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         <%} %>
+         </c:when> 
+         <c:otherwise>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         </c:otherwise>
+         </c:choose>
       </div>
-   </header>
-
+    </div>
+  </header>
 
 <main class="container">
 <h3>나의 정보</h3>
@@ -71,13 +95,13 @@ h2, h3,p {
 		<img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
         <h2>예약 목록</h2>
         <p>예약 목록을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
+        <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
       </div>
       <div class="feature col">
         <img class="bi" id="review" width="63em" height="63em" src="../images/review.png"/>
         <h2>리뷰 쓰러 가기</h2>
         <p>방문하셨던 숙소의 리뷰를 쓰고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <button class="btn btn-secondary" href="#" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</button>
+        <a class="btn btn-secondary" type="submit" href="review" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
       </div>
     </div>
   </div>
