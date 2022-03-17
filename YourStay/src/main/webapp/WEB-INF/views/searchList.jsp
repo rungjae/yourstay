@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -65,7 +65,7 @@
                      $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
 
                   }else{
-                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?accom_id=" + item.accom_id + "'><img src='images/tower.JPG'class='img-thumbnail'alt='Responsive image'></a></div><div class='itemCost'><h5>" + item.price + "원</h5></div><div class='itemTitle'><h5>" + item.name + "</h5></div><div class='itemRecommandPoint'></div></div>")
+                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?accom_id=" + item.aid + "'><img src='images/tower.JPG'class='img-thumbnail'alt='Responsive image'></a></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
                      .appendTo("#contentInput");
 
                   }
@@ -180,7 +180,7 @@
                      $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
 
                   }else{
-                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?accom_id=" + item.accom_id + "'><img src='images/tower.JPG'class='img-thumbnail'alt='Responsive image'></a></div><div class='itemCost'><h5>" + item.price + "원</h5></div><div class='itemTitle'><h5>" + item.name + "</h5></div><div class='itemRecommandPoint'></div></div>")
+                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?accom_id=" + item.aid + "'><img src='images/tower.JPG'class='img-thumbnail'alt='Responsive image'></a></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
                      .appendTo("#contentInput");
                   }
 
@@ -353,212 +353,212 @@
    });
 </script>
 <%
-   String id = (String) session.getAttribute("userid");
+	String id = (String) session.getAttribute("userid");
 %>
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/searchList.css">
 <link rel="stylesheet" href="css/airDnDCSS.css?ver=4">
 <link rel="stylesheet"
-   href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 </head>
 
 
 <body>
-   <!-- TopSearch 가져옴 시작-->
-   <input type="hidden" id="hiddenCity">
-   <input type="hidden" id="hiddenStartDate">
-   <input type="hidden" id="hiddenEndDate">
-   <input type="hidden" id="hiddenPerson">
+	<!-- TopSearch 가져옴 시작-->
+	<input type="hidden" id="hiddenCity">
+	<input type="hidden" id="hiddenStartDate">
+	<input type="hidden" id="hiddenEndDate">
+	<input type="hidden" id="hiddenPerson">
 
-   <!-- TopSearch 가져옴 끝-->
-   <div id="searchList">
-      <div id="top">
-         <img src="img/logo.png" id="logo">
-         <div id="topSearch">
-            <div id="topCityDiv">
-               <input type="text" id="topCity" value="모든 위치" name="searchCity">
-            </div>
-            <div id="topDatepickerDiv">
-               <input type="text" id="topDatepicker1" value="모든 날짜"
-                  name="searchStartDate"> ~ <input type="text"
-                  id="topDatepicker2" value="모든 날짜" name="searchEndDate">
-            </div>
-            <div id="topPersonnelDiv">
-               <select id="topPersonnel" name="searchNumOfPerson">
-                  <option value="1">인원 1명</option>
-                  <option value="2">인원 2명</option>
-                  <option value="3">인원 3명</option>
-                  <option value="4">인원 4명</option>
-                  <option value="5">인원 5명</option>
-                  <option value="6">인원 5명+</option>
-               </select>
-            </div>
-            <input type="submit" id="topSearchSubmitBtn" value="검색">
-         </div>
-         <div id="memberStatus">
-            <c:choose>
-               <c:when test="${msg =='failure'}">
-                  <div id="nomemberStatusWrapper">
-                     <div id="noMemberStatus">
-                        <a class="indexFont" href="join.jsp">회원가입</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp; <a class="indexFont" href="login.jsp">로그인</a>
-                     </div>
-                  </div>
-               </c:when>
-               <c:when test="${msg == null}">
-                  <!-- 로그인X -->
+	<!-- TopSearch 가져옴 끝-->
+	<div id="searchList">
+		<div id="top">
+			<img src="img/logo.png" id="logo">
+			<div id="topSearch">
+				<div id="topCityDiv">
+					<input type="text" id="topCity" value="모든 위치" name="searchCity">
+				</div>
+				<div id="topDatepickerDiv">
+					<input type="text" id="topDatepicker1" value="모든 날짜"
+						name="searchStartDate"> ~ <input type="text"
+						id="topDatepicker2" value="모든 날짜" name="searchEndDate">
+				</div>
+				<div id="topPersonnelDiv">
+					<select id="topPersonnel" name="searchNumOfPerson">
+						<option value="1">인원 1명</option>
+						<option value="2">인원 2명</option>
+						<option value="3">인원 3명</option>
+						<option value="4">인원 4명</option>
+						<option value="5">인원 5명</option>
+						<option value="6">인원 5명+</option>
+					</select>
+				</div>
+				<input type="submit" id="topSearchSubmitBtn" value="검색">
+			</div>
+			<div id="memberStatus">
+				<c:choose>
+					<c:when test="${msg =='failure'}">
+						<div id="nomemberStatusWrapper">
+							<div id="noMemberStatus">
+								<a class="indexFont" href="join.jsp">회원가입</a>
+								&nbsp;&nbsp;&nbsp;&nbsp; <a class="indexFont" href="login.jsp">로그인</a>
+							</div>
+						</div>
+					</c:when>
+					<c:when test="${msg == null}">
+						<!-- 로그인X -->
 
-                  <%
-                     if (id == null) {
-                  %>
+						<%
+							if (id == null) {
+						%>
 
-                  <div id="topNomemberStatusWrapper">
-                     <div id="noMemberStatus">
-                        <a class="indexFont" href="join.jsp">회원가입</a>
-                        &nbsp;&nbsp;&nbsp;&nbsp; <a class="indexFont" href="login.jsp">로그인</a>
-                     </div>
-                  </div>
-                  <%
-                     } else {
-                  %>
-                  <div id="topMemberStatusWrapper">
-                     <div id="memberStatus">
-                        <p id="memberStatusFont"><%=id%>님 반갑습니다!
-                        </p>
-                     </div>
-                     <div id="tempImg">
-                        <h2 style="color: #fff;">&nbsp;&nbsp;메뉴</h2>
-                        <div id="rollDown">
-                           <div class="list-group">
-                              <a href="mypage.jsp"
-                                 class="list-group-item list-group-item-action">마이 페이지</a> <a
-                                 href="getReservList.do?userId=<%=id%>"
-                                 class="list-group-item list-group-item-action">예약 리스트</a> <a
-                                 href="roomsList.jsp"
-                                 class="list-group-item list-group-item-action">숙박지 리스트</a> <a
-                                 href="logout.do"
-                                 class="list-group-item list-group-item-action">로그아웃</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <%
-                     }
-                  %>
-               </c:when>
-               <c:otherwise>
-                  <div id="topMemberStatusWrapper">
-                     <div id="memberStatus">
-                        <p id="memberStatusFont"><%=id%>님 반갑습니다!
-                        </p>
-                     </div>
-                     <div id="tempImg">
-                        <h2 style="color: #fff;">&nbsp;&nbsp;메뉴</h2>
-                        <div id="rollDown">
-                           <div class="list-group">
-                              <a href="mypage.jsp"
-                                 class="list-group-item list-group-item-action">마이 페이지</a> <a
-                                 href="getReservList.do?userId=<%=id%>"
-                                 class="list-group-item list-group-item-action">예약 리스트</a> <a
-                                 href="roomsList.jsp"
-                                 class="list-group-item list-group-item-action">숙박지 리스트</a> <a
-                                 href="logout.do"
-                                 class="list-group-item list-group-item-action">로그아웃</a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </c:otherwise>
-            </c:choose>
-         </div>
-      </div>
-      <div id="selectRange">
+						<div id="topNomemberStatusWrapper">
+							<div id="noMemberStatus">
+								<a class="indexFont" href="join.jsp">회원가입</a>
+								&nbsp;&nbsp;&nbsp;&nbsp; <a class="indexFont" href="login.jsp">로그인</a>
+							</div>
+						</div>
+						<%
+							} else {
+						%>
+						<div id="topMemberStatusWrapper">
+							<div id="memberStatus">
+								<p id="memberStatusFont"><%=id%>님 반갑습니다!
+								</p>
+							</div>
+							<div id="tempImg">
+								<h2 style="color: #fff;">&nbsp;&nbsp;메뉴</h2>
+								<div id="rollDown">
+									<div class="list-group">
+										<a href="mypage.jsp"
+											class="list-group-item list-group-item-action">마이 페이지</a> <a
+											href="getReservList.do?userId=<%=id%>"
+											class="list-group-item list-group-item-action">예약 리스트</a> <a
+											href="roomsList.jsp"
+											class="list-group-item list-group-item-action">숙박지 리스트</a> <a
+											href="logout.do"
+											class="list-group-item list-group-item-action">로그아웃</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<%
+							}
+						%>
+					</c:when>
+					<c:otherwise>
+						<div id="topMemberStatusWrapper">
+							<div id="memberStatus">
+								<p id="memberStatusFont"><%=id%>님 반갑습니다!
+								</p>
+							</div>
+							<div id="tempImg">
+								<h2 style="color: #fff;">&nbsp;&nbsp;메뉴</h2>
+								<div id="rollDown">
+									<div class="list-group">
+										<a href="mypage.jsp"
+											class="list-group-item list-group-item-action">마이 페이지</a> <a
+											href="getReservList.do?userId=<%=id%>"
+											class="list-group-item list-group-item-action">예약 리스트</a> <a
+											href="roomsList.jsp"
+											class="list-group-item list-group-item-action">숙박지 리스트</a> <a
+											href="logout.do"
+											class="list-group-item list-group-item-action">로그아웃</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		<div id="selectRange">
 
-         <div id="selectRangeOfCost">
-            <b>가격범위</b> <span class="glyphicon glyphicon-chevron-down"></span>
+			<div id="selectRangeOfCost">
+				<b>가격범위</b> <span class="glyphicon glyphicon-chevron-down"></span>
 
-         </div>
+			</div>
 
 
-         <div id="selectHouseType">
-            <b>숙소유형</b> <span class="glyphicon glyphicon-chevron-down"></span>
+			<div id="selectHouseType">
+				<b>숙소유형</b> <span class="glyphicon glyphicon-chevron-down"></span>
 
-         </div>
-      </div>
-      <div id="itemList">
-         <div id="setRangePanel">
-            <div class="panelCloseButton">✖</div>
-            <div class="panelDetail">
-               <div class="input-group">
-                  <span class="input-group-addon">최저값</span> <input type="text"
-                     id="minPrice" class="form-control"
-                     aria-label="Amount (to the nearest dollar)"> <span
-                     class="input-group-addon">.00</span>
-               </div>
-               <br>
-               <div class="input-group">
-                  <span class="input-group-addon">최고값</span> <input type="text"
-                     id="maxPrice" class="form-control"
-                     aria-label="Amount (to the nearest dollar)"> <span
-                     class="input-group-addon">.00</span>
-               </div>
-            </div>
-         </div>
-         <div id="setHouseTypePanel">
-            <div class="panelCloseButton">✖</div>
-            <div class="panelDetail">
-               <div class="input-group">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="hr-left">
-                           <span class="input-group-addon"> <input type="checkbox"
-                              name="typeFilter" id="checkBox1" value="집전체" che cked><b>집
-                                 전체</b> (나 혼자 사용할 수 있는 숙소)
-                           </span>
-                        </div>
-                     </div>
-                     <div class="col-md-12">
-                        <div class="hr-left">
-                           <span class="input-group-addon"> <input type="checkbox"
-                              name="typeFilter" id="checkBox2" value="개인실" checked><b>개인실</b>(개인실이
-                              있고 공동 공간은 함께 사용하는 숙소)
-                           </span>
-                        </div>
-                     </div>
-                     <div class="col-md-12">
-                        <div class="hr-left">
-                           <span class="input-group-addon"> <input type="checkbox"
-                              name="typeFilter" id="checkBox3" value="다인실" checked><b>다인실</b>(다인실과
-                              같은 공유 공간을 이용하는 숙소)
-                           </span>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- /input-group -->
-            </div>
-         </div>
-         <div id="contentInput"></div>
+			</div>
+		</div>
+		<div id="itemList">
+			<div id="setRangePanel">
+				<div class="panelCloseButton">✖</div>
+				<div class="panelDetail">
+					<div class="input-group">
+						<span class="input-group-addon">최저값</span> <input type="text"
+							id="minPrice" class="form-control"
+							aria-label="Amount (to the nearest dollar)"> <span
+							class="input-group-addon">.00</span>
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon">최고값</span> <input type="text"
+							id="maxPrice" class="form-control"
+							aria-label="Amount (to the nearest dollar)"> <span
+							class="input-group-addon">.00</span>
+					</div>
+				</div>
+			</div>
+			<div id="setHouseTypePanel">
+				<div class="panelCloseButton">✖</div>
+				<div class="panelDetail">
+					<div class="input-group">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="hr-left">
+									<span class="input-group-addon"> <input type="checkbox"
+										name="typeFilter" id="checkBox1" value="집전체" che cked><b>집
+											전체</b> (나 혼자 사용할 수 있는 숙소)
+									</span>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="hr-left">
+									<span class="input-group-addon"> <input type="checkbox"
+										name="typeFilter" id="checkBox2" value="개인실" checked><b>개인실</b>(개인실이
+										있고 공동 공간은 함께 사용하는 숙소)
+									</span>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="hr-left">
+									<span class="input-group-addon"> <input type="checkbox"
+										name="typeFilter" id="checkBox3" value="다인실" checked><b>다인실</b>(다인실과
+										같은 공유 공간을 이용하는 숙소)
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /input-group -->
+				</div>
+			</div>
+			<div id="contentInput"></div>
 
-      </div>
+		</div>
 
-   </div>
-   <div id="footer">
-      <div id="footerContentsWrapepr">
-         <div id="footerContents1">
-            <img id="footerLogo" src="img/logo.png" />
-            <p id="footerP1">공지사항</p>
-            <p id="footerP1Right">4조 화이팅!! 모두들 수고많았습니다!! 2달 동안 정말 즐거웠고 남은
-               인턴도 잘 보내요!!</p>
-         </div>
-         <div id="footerContents2">
-            <p id="footerP2">
-               회사소개 · 광고안내 · 검색등록 · 제휴문의 · 인재채용 · 서비스약관 · 청소년보호정책 · 개인정보처리방침 ·
-               웹접근성안내 · 고객센터<br> Copyright © Skdidimdol Corp. All rights
-               reserved.
-            </p>
-         </div>
-      </div>
-   </div>
+	</div>
+	<div id="footer">
+		<div id="footerContentsWrapepr">
+			<div id="footerContents1">
+				<img id="footerLogo" src="img/logo.png" />
+				<p id="footerP1">공지사항</p>
+				<p id="footerP1Right">4조 화이팅!! 모두들 수고많았습니다!! 2달 동안 정말 즐거웠고 남은
+					인턴도 잘 보내요!!</p>
+			</div>
+			<div id="footerContents2">
+				<p id="footerP2">
+					회사소개 · 광고안내 · 검색등록 · 제휴문의 · 인재채용 · 서비스약관 · 청소년보호정책 · 개인정보처리방침 ·
+					웹접근성안내 · 고객센터<br> Copyright © Skdidimdol Corp. All rights
+					reserved.
+				</p>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
