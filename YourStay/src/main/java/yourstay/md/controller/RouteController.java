@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.resultVO;
 import yourstay.md.mapper.SearchMapper;
 
 @Controller
@@ -52,4 +53,10 @@ public class RouteController {
 
 	      return mv;
 	   }
+	@RequestMapping(value = "roomDetailInfo", method=RequestMethod.GET )
+	public ModelAndView searchDetail(@RequestParam Integer aid) {
+	      resultVO resVO = mapper.getAccommodationByAccommodationId(aid);
+	      System.out.println(resVO.toString()); 
+	      return new ModelAndView("info/info","resVO",resVO);
+	}
 }

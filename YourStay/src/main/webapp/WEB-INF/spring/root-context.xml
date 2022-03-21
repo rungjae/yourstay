@@ -29,6 +29,8 @@
 			<list>
 				<value>classpath:yourstay/md/mapper/MemberMapper.xml</value>
 				<value>classpath:yourstay/md/mapper/SearchMapper.xml</value>
+				<value>classpath:yourstay/md/mapper/reservedDateMapper.xml</value>
+				<value>classpath:yourstay/md/mapper/AccommodationMapper.xml</value>
 			</list>
 		</property>
 	</bean>
