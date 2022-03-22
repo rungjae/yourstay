@@ -1,5 +1,7 @@
 package yourstay.md.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,19 +27,20 @@ public class MypageController {
 	@Autowired
 	private AccommodationService accommodationService;
 	@Autowired
-	private MemberMapper membermapper;
+	private MemberMapper memberMapper;
 	
 	@GetMapping(value="/home")
-    public ModelAndView gohome(ModelAndView mv){
+    public ModelAndView gohome(HttpSession session){
         log.info("MypageController -> gohome 요청");
-        mv.setViewName("mypage/home");
+        MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
+        ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
     }
 	@PostMapping("/register.do")
 	public String roomRegister(ModelAndView mv, Accomoption aco, Accommodation ac, Image img, String memail) {
 		log.info("roomOption Data -> info 전달");
 		log.info("로그인한 회원의 메일: " + memail);
-		MemberVO member = membermapper.getUser(memail);
+		MemberVO member = memberMapper.getUser(memail);
 		log.info("로그인한 회원의  메일: " + member.getMemail()+", 회원의 번호: "+ member.getMseq() +", 회원의 이름: "+member.getMname());
 //		MemberVO member = accommodationService.getRegisterMemberSeqS(mseq);
 //		accommodationService.insertImageS(img);// 이미지 테이블에 insert
