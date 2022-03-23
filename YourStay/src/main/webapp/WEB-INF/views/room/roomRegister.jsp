@@ -21,10 +21,6 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="../css/airDnDCSS.css">
 
-<!-- 이미지 등록 관련 -->
-<link href="/css/file.css" rel="stylesheet">
-<script src="/js/index.js"></script>
-
 <!-- 구글웹폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,8 +30,8 @@
 
 <!--// bootstrap-css -->
 <!-- css -->
-<!-- <link rel="stylesheet" href="../css/blog.css" type="text/css"
-	media="all" /> -->
+<link rel="stylesheet" href="../css/blog.css" type="text/css"
+	media="all" />
 <link rel="stylesheet" href="../css/navbar.css" type="text/css"
 	media="all" />
 <%
@@ -543,248 +539,34 @@ p {
 						</div>
 					</div>
 
-					<!-- 이미지 등록칸 1  -->
 					<div class="col-md-6" style="width: 33%;">
 						<div
-							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
+							style="height: 500px;">
 							<div class="col p-4 d-flex flex-column position-static">
 								<span class="badge rounded-pill bg-secondary"
 									style="width: 18%; margin-bottom: 2%;">YourStay</span>
-								<h3 class="mb-0">사진제작 샘플부분</h3>
-								<p class="card-text mb-auto">여기에 사진을 등록해주세요!</p>
+								<h3 class="mb-0">Accomodation's Image</h3>
+								<p class="card-text mb-auto">Please add your accomodation's
+									Image.</p>
 							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile" name="chooseFile"
-														accept="image/*" onchange="loadFile(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show2"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload2">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile2"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile2" name="chooseFile"
-														accept="image/*" onchange="loadFile2(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<input class="form-control me-2" type='file' name='iid' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;"> <input
+								class="form-control me-2" type='file' name='iid' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;"> <input
+								class="form-control me-2" type='file' name='iid' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;"> <input
+								class="form-control me-2" type='file' name='iid' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;"> <input
+								class="form-control me-2" type='file' name='iid' size="60"
+								placeholder="Room's Image"
+								style="margin-bottom: 1%; height: 8%;">
 						</div>
 					</div>
-
-
-					<!-- 이미지 등록칸 2  -->
-					<div class="col-md-6" style="width: 33%;">
-						<div
-							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-							<div class="col p-4 d-flex flex-column position-static">
-								<span class="badge rounded-pill bg-secondary"
-									style="width: 18%; margin-bottom: 2%;">YourStay</span>
-								<h3 class="mb-0">사진제작 샘플부분</h3>
-								<p class="card-text mb-auto">여기에 사진을 등록해주세요!</p>
-							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show3"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload3">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile3"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile3" name="chooseFile"
-														accept="image/*" onchange="loadFile3(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show4"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload4">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile4"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile4" name="chooseFile"
-														accept="image/*" onchange="loadFile4(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- 이미지 등록칸 3  -->
-					<div class="col-md-6" style="width: 33%;">
-						<div
-							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-							<div class="col p-4 d-flex flex-column position-static">
-								<span class="badge rounded-pill bg-secondary"
-									style="width: 18%; margin-bottom: 2%;">YourStay</span>
-								<h3 class="mb-0">사진제작 샘플부분</h3>
-								<p class="card-text mb-auto">여기에 사진을 등록해주세요!</p>
-							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show5"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload5">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile5"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile5" name="chooseFile"
-														accept="image/*" onchange="loadFile5(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col">
-								<div
-									class="card card-cover h-100 overflow-hidden text-white bg-dark rounded-5 shadow-lg imageUp"
-									id="image-show6"
-									style="background-image: url('unsplash-photo-1.jpg');">
-									<div
-										class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1"
-										id="divImg1"
-										style="z-index: 1; align-items: center; padding-left: 0px; padding-top: 3rem; padding-bottom: 300px;">
-										<div class="container">
-											<div style="margin-top: 50px;" class="image-upload"
-												id="image-upload6">
-												<form method="post" enctype="multipart/form-data">
-													<div class="button">
-														<label for="chooseFile6"> 사진등록 <span> </span> <img
-															src="/images/camera2.png" id="img1" alt="Bootstrap"
-															width="32" height="32"
-															class="rounded-circle border border-white">
-														</label>
-													</div>
-													<input type="file" id="chooseFile6" name="chooseFile"
-														accept="image/*" onchange="loadFile6(this)">
-												</form>
-												<div class="fileContainer">
-													<div class="fileInput" style="border: none;">
-														<p id="fileName"></p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
 					<div class="col-md-6" style="width: 33%;">
 						<div
 							class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="../login/login_check_module.jsp"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +58,33 @@
 body,h1, h2, h3 {
    font-family: 'Poor Story', cursive;
 }
+.sort{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+}
+
+.sort-in{
+   width: 35%
+}
+.wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .close:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
 </style>
+<%
+   String memail = (String) session.getAttribute("memail");
+%>
 </head>
 <body>
    <!-- 상단 -->
@@ -75,9 +102,22 @@ body,h1, h2, h3 {
                   stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
                   viewBox="0 0 24 24">
                   <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
-                  <path d="M21 21l-5.2-5.2" /></svg>
-            </a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
-               up</a>
+                  <path d="M21 21l-5.2-5.2" /></svg></a> 
+                  
+		         <c:choose>
+         <c:when test="${empty loginOkUser}">
+         	&nbsp;
+            <a class="py-2" href="../login/loginPage">로그인</a>
+            &nbsp;&nbsp;
+         </c:when>
+         <c:otherwise>
+            <div>
+            <font id="fontline" class="py-2 nav-link active" style="color:green; texg-align:center">${loginOkUser.memail} 님 환영합니다</font>
+            </div>
+         <li class="nav-item"><a class="py-2 nav-link active" href="../login/logout.do">로그아웃</a></li>
+            </c:otherwise>
+            </c:choose>
+            
          </div>
       </div>
    </header>
@@ -87,9 +127,14 @@ body,h1, h2, h3 {
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
          <div class="col-md-6 px-0">
             <h1 class="display-4 fst-italic">숙소 이름: ${resVO.aname}</h1>
-            <p class="lead my-3">숙소 위치: ${resVO.aloc}<br/>숙소 가격: ${resVO.aprice}<br/>숙소 별점: ${resVO.apoint}<br/>숙소 타입: ${resVO.atype}<br/>숙소 최대 가능 인원: ${resVO.apeople}<br/></p>
+            <p class="lead my-3">
+            	숙소 위치: ${resVO.aloc}<br/>
+            	숙소 가격: ${resVO.aprice}<br/>
+            	숙소 별점: ${resVO.apoint}<br/>
+            	숙소 타입: ${resVO.atype}<br/>
+            	숙소 최대 가능 인원: ${resVO.apeople}<br/></p>
             <p class="lead mb-0">
- 
+               <a href="#" class="text-white fw-bold">무슨무슨 링크...</a>
             </p>
          </div>
       </div>
@@ -148,12 +193,15 @@ body,h1, h2, h3 {
       <div class="row g-5">
          <div class="col-md-8">
             <article class="blog-post">
-               <h2 class="blog-post-title">${resVO.mname}님이 운영하는 숙소입니다</h2>
+               <h2 class="blog-post-title">${resVO.mname}님이 운영하는 숙소입니다 <i class='fas fa-hand-holding-heart'></i></h2>
                <p class="blog-post-meta">방 갯수: ${resVO.rnum}<br/>화장실 갯수: ${resVO.tnum}<br/>침대 갯수: ${resVO.bnum}<br/></p>
                <hr>
                <h2 class="fw-bold">편의시설</h2>
                <div
                   class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                  <c:set var="wifi" value="${resVO.wifi}" />
+                  <c:choose>
+                  <c:when test="${wifi == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -162,6 +210,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">와이파이</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="wave" value="${resVO.wave}" />
+                  <c:choose>
+                  <c:when test="${wave == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -170,6 +223,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">전자렌지</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="refg" value="${resVO.refg}" />
+                  <c:choose>
+                  <c:when test="${refg == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -178,6 +236,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">냉장고</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="bd" value="${resVO.bd}" />
+                  <c:choose>
+                  <c:when test="${bd == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -186,6 +249,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">비데</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="tv" value="${resVO.tv}" />
+                  <c:choose>
+                  <c:when test="${tv == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -194,6 +262,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">TV</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="pet" value="${resVO.pet}" />
+                  <c:choose>
+                  <c:when test="${pet == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -202,6 +275,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">반려견동반</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="kitchen" value="${resVO.kitchen}" />
+                  <c:choose>
+                  <c:when test="${kitchen == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -210,6 +288,11 @@ body,h1, h2, h3 {
                         <p class="mb-0">주방</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="wash" value="${resVO.wash}" />
+                  <c:choose>
+                  <c:when test="${wash == 0}">
                   <div class="col d-flex align-items-start">
                      <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
                         height="1.75em">
@@ -218,7 +301,75 @@ body,h1, h2, h3 {
                         <p class="mb-0">세탁기</p>
                      </div>
                   </div>
+                  </c:when>
+                  </c:choose>
+                  <c:set var="parking" value="${resVO.parking}" />
+                  <c:choose>
+                  <c:when test="${parking == 0}">
+                   <div class="col d-flex align-items-start">
+                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                      height="1.75em">
+                      <i class='fa fa-car'></i></svg>
+                   <div>
+                      <p class="mb-0">주차</p>
+                   </div>
+                </div>
+             	</c:when>
+             </c:choose>
+             <c:set var="fire" value="${resVO.fire}" />
+             <c:choose>
+             <c:when test="${fire == 0}">
+             <div class="col d-flex align-items-start">
+                   <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                      height="1.75em">
+                      <i class='fa fa-fire-extinguisher'></i></svg>
+                   <div>
+                      <p class="mb-0">화재경보기</p>
+                   </div>
+                </div>
+                </c:when>
+                </c:choose>
+                <c:set var="smoking" value="${resVO.smoking}" />
+	            <c:choose>
+	            <c:when test="${smoking == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class='fas fa-smoking'></i></svg>
+                     <div>
+                        <p class="mb-0">흡연 가능</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
+                <c:set var="roof" value="${resVO.roof}" />
+	            <c:choose>
+	            <c:when test="${roof == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class='fa fa-home'></i></svg>
+                     <div>
+                        <p class="mb-0">루프탑</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
+                <c:set var="bbq" value="${resVO.bbq}" />
+	            <c:choose>
+	            <c:when test="${bbq == 0}">
+               <div class="col d-flex align-items-start">
+                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em"
+                        height="1.75em">
+                        <i class="fa-solid fa-utensils accom-op"></i></svg>
+                     <div>
+                        <p class="mb-0">루프탑</p>
+                     </div>
+                  </div>
+                  </c:when>
+                  </c:choose>
                </div>
+           
                <hr>
                <h2 class="fw-bold">숙소 공지사항</h2>
                <p>${resVO.anotice}</p>
@@ -227,59 +378,67 @@ body,h1, h2, h3 {
                <!-- 지도 -->
                <h2 class="fw-bold">위치</h2>
                <div class="map-area">
-                  <div id="map" style="width: 100%; height: 300px;"></div>
-                  <script type="text/javascript"
-                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356"></script>
-                  <script>
-                     var container = document.getElementById('map');
-                     var options = {
-                        center : new kakao.maps.LatLng(37.478890,
-                              126.878650),
-                        level : 3
-                     };
-//
-                     var map = new kakao.maps.Map(container, options);
-
-                     var data = [
-                           [ 37.478890, 126.878650,
-                                 '<div style="padding:5px">내용</div>' ],
-                           [ 37.47796194357405, 126.8805951377817,
-                                 '<div style="padding:5px">내용</div>' ],
-                           [ 37.481417597740965, 126.87617383635731,
-                                 '<div style="padding:5px">내용</div>' ]
-
-                     ]
-
-                     for (var i = 0; i < data.length; i++) {
-
-                        // 마커가 표시될 위치입니다 
-                        var markerPosition = new kakao.maps.LatLng(
-                              37.478890, 126.878650);
-
-                        // 마커를 생성합니다
-                        var marker = new kakao.maps.Marker({
-                           position : markerPosition
-                        });
-
-                        // 마커가 지도 위에 표시되도록 설정합니다
-                        marker.setMap(map);
-
-                        var iwContent = '<div style="padding:5px;">숙소 이름<br><a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">카카오맵 길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                        iwPosition = new kakao.maps.LatLng(data[i][0],
-                              data[i][1]); //인포윈도우 표시 위치입니다
-
-                        // 인포윈도우를 생성합니다
-                        var infowindow = new kakao.maps.InfoWindow({
-                           position : iwPosition,
-                           content : data[i][2]
-                        });
-
-                        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-                        infowindow.open(map, marker);
-
-                     }
-                  </script>
-               </div>
+            <div id="map" style="height: 580px;"></div>
+            <script type="text/javascript"
+               src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356"></script>
+            <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+         <script>
+               var ax = '<c:out value="${resVO.ax}"/>';
+               var ay = '<c:out value="${resVO.ay}"/>';
+               var mapContainer = document.getElementById('map'), // 지도의 중심좌표
+               mapOption = { 
+                   center: new kakao.maps.LatLng(ax, ay), // 처음 지도가 만들어지는 위치 = 지도의 중심좌표
+                   level: 3 // 지도의 확대 레벨
+               }; 
+            
+              var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            
+              // 지도에 마커를 표시합니다 
+              var marker = new kakao.maps.Marker({
+                  map: map, 
+                  position: new kakao.maps.LatLng(ax, ay) // 지도 위에 생기는 마커의 좌표 = 각 숙소별 좌표
+              });
+            
+              // 커스텀 오버레이에 표시할 컨텐츠 입니다
+              // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+              // 별도의 이벤트 메소드를 제공하지 않습니다 
+              var content = '<div class="wrap">' + 
+                          '    <div class="info">' + 
+                          '        <div class="title">' + 
+                          '            ${resVO.aname}' + 
+                          '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+                          '        </div>' + 
+                          '        <div class="body">' + 
+                          '            <div class="img">' +
+                          '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+                          '           </div>' + 
+                          '            <div class="desc">' + 
+                          '                <div class="ellipsis">숙소 도로명 주소</div>' + 
+                          '                <div><a href="https://map.kakao.com/link/to/숙소이름,ax,ay" target="_blank" class="link">길찾기</a></div>' + 
+                          '            </div>' + 
+                          '        </div>' + 
+                          '    </div>' +    
+                          '</div>';
+            
+              // 마커 위에 커스텀오버레이를 표시합니다
+              // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+              var overlay = new kakao.maps.CustomOverlay({
+                  content: content,
+                  map: map,
+                  position: marker.getPosition()       
+              });
+            
+              // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+              kakao.maps.event.addListener(marker, 'click', function() {
+                  overlay.setMap(map);
+              });
+            
+              // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+              function closeOverlay() {
+                  overlay.setMap(null);     
+              }
+            </script>
+         </div>
                <hr>
                <!-- 후기게시판 -->
                <h2 class="fw-bold">후기</h2>
@@ -1313,7 +1472,10 @@ body,h1, h2, h3 {
                <main class="page payment-page">
                   <section class="payment-form dark">
                      <div class="container">
-                        <form>
+                        <form action="/res/reservdetail" method="post">
+                        <input type="hidden" value="${resVO.aid}" name="aid">
+                        <input type="hidden" value="${resVO.rstart}" name="rstart">
+                        <input type="hidden" value="${resVO.rend}" name="rend">
                            <div class="products">
                               <h3 class="title">금액</h3>
                               <div class="item">
@@ -1361,7 +1523,7 @@ body,h1, h2, h3 {
                                        aria-label="Card Holder" aria-describedby="basic-addon1">
                                  </div>
                                  <div class="form-group col-sm-12">
-                                    <button type="button" class="btn btn-primary"
+                                    <button type="submit" class="btn btn-primary"
                                        data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
                                        예약하기</button>
                                  </div>

@@ -20,11 +20,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 	
 	@Autowired
 	SqlSession session;
-
+    
 	@Override
 	public List<String> addReservation(Reservation reserv) {
 		/**
-		 * 출력용 메소드 입니다.
+		 * 출력용 메소드 입니다. (예약이 가능한지 불가능한지 판별용) >> 해당 매소드의 반환값에따라 조건을줌 예)) 예약날짜 선택시 겹치는 날짜가없을면 예약성공! 겹치는 날짜가 있을시 예약 불가로 이동
 		 * @param Reservation Reservation 테이블에 추가할 예약정보가 담긴 VO
 		 * @return 성공 [TRUE, Insert된 ROW갯수], 예약날짜가 겹치면 [FALSE, 겹친날짜의 String...]
 		 */

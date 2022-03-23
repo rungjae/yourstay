@@ -133,34 +133,37 @@ div.list-font {
                    "person" : person1
                 };
                 
-              $("#godetail").on("keydown", function(){
-                 $.ajax({
-                    url: "roomDetailInfo", 
-                    type: "GET", 
-                    data : jData1,
-                    dataType : 'json',
-                    success: function(data){
-                       result = data;
-                            $.each(data, function(idx, item) {
-                               if(data==null){
-                                  $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
+		    	 $("#godetail").on("keydown", function(){
+		    		 $.ajax({
+		    			 url: "roomDetailInfo", 
+		    			 type: "GET", 
+		    			 data : jData1,
+		    			 dataType : 'json',
+		    			 success: function(data){
+		    				 result = data;
+		    	               $.each(data, function(idx, item) {
+		    	                  if(data==null){
+		    	                     $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
 
-                               }else{
-                                  $("<div class='item'><div class='itemPic'><a href='searchDetail.do?aid=" + item.aid + "'></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
-                                  .appendTo("#contentInput");
+		    	                  }else{
+		    	                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?aid=" + item.aid + "'></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
+		    	                     .appendTo("#contentInput");
 
-                               }
-                               
-                            });
-                            $('#hiddenCity').val(city1);
-                            $('#hiddenStartDate').val(startDate1);
-                            $('#hiddenEndDate').val(endDate1);
-                            $('#hiddenPerson').val(person1);
-                    }
-                 });
-              });
+		    	                  }
+		    	                  
+		    	               });
+		    	               $('#hiddenCity').val(city1);
+		    	               $('#hiddenStartDate').val(startDate1);
+		    	               $('#hiddenEndDate').val(endDate1);
+		    	               $('#hiddenPerson').val(person1);
+		    			 }
+		    		 });
+		    	 });
              });
 </script>
+<%
+   String memail = (String) session.getAttribute("memail");
+%>
 </head>
 <body>
    <header class="blog-header py-3" style="margin-bottom: 4%;">
@@ -179,8 +182,29 @@ div.list-font {
                   viewBox="0 0 24 24">
                   <title>Search</title><circle cx="10.5" cy="10.5" r="7.5" />
                   <path d="M21 21l-5.2-5.2" /></svg>
-            </a> <a class="btn btn-sm btn-outline-secondary" href="login/loginPage">Sign
-               up</a>
+            </a> 
+            <c:choose>
+         <c:when test="${msg =='failure'}">
+        <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+        </c:when> 
+         <c:when test="${msg == null}"> <!-- 로그인X -->
+         
+         <% 
+            if(memail == null){
+         %>
+           <a class="btn btn-secondary" href="../login/loginPage" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">Sign up</a>
+          <%
+            }else{
+         %>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail %>님 반갑습니다!</p>
+         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         <%} %>
+         </c:when> 
+         <c:otherwise>
+         <p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님 반갑습니다!</p>
+         <a href="../login/logout.do" class="btn btn-secondary" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">로그아웃</a>
+         </c:otherwise>
+         </c:choose>
          </div>
       </div>
    </header>
@@ -240,7 +264,7 @@ div.list-font {
                style="cursor: pointer;">
       </div>
       </form>
-         <c:forEach items="${acvo}" var="acvo">
+   		<c:forEach items="${acvo}" var="acvo">
          <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
             style="width: 50%;">
@@ -250,7 +274,7 @@ div.list-font {
                <p class="card-text mb-auto">
                   숙소 가격 : ${acvo.aprice}<br/>숙소 타입 : ${acvo.atype}<br/>최대 가능 인원 :
                   ${acvo.apeople}<br/>
-                  <a id="godetail" href="roomDetailInfo?aid=${acvo.aid}" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
+                  <a id="godetail" href="roomDetailInfo?aid=${acvo.aid}&rstart=${startDate}&rend=${endDate}" style="text-decoration:none;">숙소 상세 정보 보러가기</a>
                </p>
 
             </div>
