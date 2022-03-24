@@ -89,7 +89,7 @@ h2, h3,p {
           <img class="bi" id="like" width="63em" height="63em" src="../images/like.png"/>
         <h2>찜 목록</h2>
         <p>찜한 숙소들을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">찜 목록</a>
+        <a class="btn btn-secondary" type="submit" href="wishlist/${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">찜 목록</a>
       </div>
       <div class="feature col">
 		<img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>

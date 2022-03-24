@@ -1,10 +1,15 @@
 package yourstay.md.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +23,7 @@ import yourstay.md.domain.MemberVO;
 import yourstay.md.mapper.MemberMapper;
 import yourstay.md.service.AccommodationService;
 import yourstay.md.service.MemberService;
+import yourstay.md.service.MyPageService;
 
 @Log4j
 @AllArgsConstructor
@@ -28,6 +34,8 @@ public class MypageController {
 	private AccommodationService accommodationService;
 	@Autowired
 	private MemberMapper memberMapper;
+	@Autowired
+	private MyPageService myPageService;
 	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
@@ -52,11 +60,14 @@ public class MypageController {
 		return "redirect:home";
 	}
 	
-	@GetMapping(value="/wishlist")
-    public ModelAndView wishlist(ModelAndView mv){
+	@GetMapping(value="/wishlist/{mseq}")
+    public String wishlist(@PathVariable("mseq") long mseq, Model model){
         log.info("MypageController -> wishlist 요청");
-        mv.setViewName("mypage/wishlist");
-        return mv;
+        Map<String, List> wishMap = myPageService.getWishS(mseq);
+    	
+		model.addAttribute("wishMap", wishMap);
+		
+		return "mypage/wishlist";
     }
 	@GetMapping(value="/review")
     public ModelAndView checkBook(ModelAndView mv){
