@@ -50,11 +50,11 @@
 <script>
 	$(function() {
 		$("#from").datepicker({
-            dateFormat : 'yy-mm-dd'
-        });
-        $("#to").datepicker({
-            dateFormat : 'yy-mm-dd'
-        });
+			dateFormat : 'yy-mm-dd'
+		});
+		$("#to").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
 		var from = $("#from").datepicker({
 			defaultDate : "+1w",
 			changeMonth : true,
@@ -62,8 +62,7 @@
 		}).on("change", function() {
 			console.log("test1");
 			to.datepicker("option", "minDate", getDate(this));
-		}), 
-		to = $("#to").datepicker({
+		}), to = $("#to").datepicker({
 			defaultDate : "+1w",
 			changeMonth : true,
 			numberOfMonths : 1
@@ -1572,66 +1571,38 @@ body, h1, h2, h3 {
 			<div class="col-md-4">
 				<div class="position-sticky" style="top: 2rem;">
 
-
 					<main class="page payment-page">
 						<section class="payment-form dark">
 							<div class="container">
 								<form action="/res/reservdetail" method="post">
 									<!--달력 -->
-									<input type="text" id="from" name="rstart" value="${resVO.rstart}"> 
-									<input type="text" id="to" name="rend" value="${resVO.rend}">
+									<input onchange="daysPriceCalc()" type="text" id="from"
+										name="rstart" value="${resVO.rstart}"> <input
+										onchange="daysPriceCalc()" type="text" id="to" name="rend"
+										value="${resVO.rend}">
 									<!-- 히든 value -->
 									<input type="hidden" value="${resVO.aid}" name="aid">
 									<div class="products">
 										<h3 class="title">금액</h3>
 										<div class="item">
-											<span class="price">${resVO.aprice}원</span>
+											<span class="price">${resVO.aprice}원</span> <input
+												id="rprice" type="hidden" value="${resVO.aprice}">
 											<p class="item-name">1일숙박비</p>
 										</div>
-										<div class="item">
-											<span class="price">${resVO.days}일</span>
+										<div class="item" id="days">
+											<span class="price">${resVO.days}박</span>
+											<input id="dayshidden" type="hidden" name="days" value="${resVO.days}">
 											<p class="item-name">숙박일수</p>
 										</div>
-										<div class="total">
-											Total<span class="price">${resVO.resultprice}원</span>
+										<div class="total" id="resultprice">
+											Total<span class="price" >${resVO.resultprice}원</span>
+											<input id="resultpricehidden" type="hidden" name="resultprice" value="${resVO.resultprice}">
 										</div>
 									</div>
-									<div class="card-details">
-										<h3 class="title">Credit Card Details</h3>
-										<div class="row">
-											<div class="form-group col-sm-7">
-												<label for="card-holder">Card Holder</label> <input
-													id="card-holder" type="text" class="form-control"
-													placeholder="Card Holder" aria-label="Card Holder"
-													aria-describedby="basic-addon1">
-											</div>
-											<div class="form-group col-sm-5">
-												<label for="">Expiration Date</label>
-												<div class="input-group expiration-date">
-													<input type="text" class="form-control" placeholder="MM"
-														aria-label="MM" aria-describedby="basic-addon1"> <span
-														class="date-separator">/</span> <input type="text"
-														class="form-control" placeholder="YY" aria-label="YY"
-														aria-describedby="basic-addon1">
-												</div>
-											</div>
-											<div class="form-group col-sm-8">
-												<label for="card-number">Card Number</label> <input
-													id="card-number" type="text" class="form-control"
-													placeholder="Card Number" aria-label="Card Holder"
-													aria-describedby="basic-addon1">
-											</div>
-											<div class="form-group col-sm-4">
-												<label for="cvc">CVC</label> <input id="cvc" type="text"
-													class="form-control" placeholder="CVC"
-													aria-label="Card Holder" aria-describedby="basic-addon1">
-											</div>
-											<div class="form-group col-sm-12">
-												<button type="submit" class="btn btn-primary"
-													data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
-													예약하기</button>
-											</div>
-										</div>
+									<div class="form-group col-sm-12">
+										<button type="submit" class="btn btn-primary"
+											data-bs-toggle="modal" data-bs-target="#staticBackdropLive">
+											예약하기</button>
 									</div>
 								</form>
 							</div>

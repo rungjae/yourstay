@@ -1,8 +1,5 @@
 package yourstay.md.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,11 +63,10 @@ public class RouteController {
 	public ModelAndView searchDetail(@RequestParam Integer aid, @RequestParam String rstart,
 			@RequestParam String rend) {
 		log.info("RouteCon searchDetail //// Integer aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
-		// 숙박일수 계산 나중에 서비스로 넣기....
 		resultVO resVO = mapper.getAccommodationByAccommodationId(aid);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
 		long resultprice = priceService.resultPrice(resVO, diffDays);//숙박일수에 따른 최종 금액 계산
-		resVO.setResultprice(resultprice);
+		resVO.setResultprice(resultprice);//최종금액계산 적용
 		resVO.setRstart(rstart);// 사용자선택 시작날짜 적용
 		resVO.setRend(rend);// 사용자선택 끝날짜 적용
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용

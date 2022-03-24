@@ -84,10 +84,9 @@
            		<div class="card-header"><p class="text-white m-0 text-center">가격 정보</p></div>
                 <div class="card-body">
 	                <p class="text-white m-0">요금 세부정보</p></br>
-	                <p class="text-white">가격: ${rdetail.aprice}</p>
-	               	<p class="text-white">서비스 수수료</p>
-	                <p class="text-white">숙박세와 수수료</p>
-	                <p class="text-white">합계</p>
+	                <p class="text-white">1박가격: ${rdetail.aprice}</p>
+	                <p class="text-white">숙박일수 : ${rdetail.days}</p>
+	                <p class="text-white">합계: ${rdetail.resultprice}</p>
 	                <div class="text-lg-end text-center">
 	                <button type="button" class="btn text-white" style="flaot:right;" data-bs-toggle="modal" data-bs-target="#price">가격 상세보기</button>
 	                </div>
