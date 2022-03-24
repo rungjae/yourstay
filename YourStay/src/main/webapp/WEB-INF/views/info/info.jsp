@@ -38,7 +38,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+<script src="/js/info_price.js"></script>
 
 
 <!-- DataTimePicker-->
@@ -1585,17 +1585,15 @@ body, h1, h2, h3 {
 									<div class="products">
 										<h3 class="title">금액</h3>
 										<div class="item">
-											<span class="price">$200</span>
-											<p class="item-name">Product 1</p>
-											<p class="item-description">Lorem ipsum dolor sit amet</p>
+											<span class="price">${resVO.aprice}원</span>
+											<p class="item-name">1일숙박비</p>
 										</div>
 										<div class="item">
-											<span class="price">$120</span>
-											<p class="item-name">Product 2</p>
-											<p class="item-description">Lorem ipsum dolor sit amet</p>
+											<span class="price">${resVO.days}일</span>
+											<p class="item-name">숙박일수</p>
 										</div>
 										<div class="total">
-											Total<span class="price">$320</span>
+											Total<span class="price">${resVO.resultprice}원</span>
 										</div>
 									</div>
 									<div class="card-details">

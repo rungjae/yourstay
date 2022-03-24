@@ -55,4 +55,6 @@ public class resultVO {
 	private String rimg3;
 	private String rstart;
 	private String rend;
+	private long days;//추가
+	private long resultprice;//추가
 }
