@@ -92,7 +92,7 @@ h2, h3,p {
         <a class="btn btn-secondary" type="submit" href="wishlist/${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">찜 목록</a>
       </div>
       <div class="feature col">
-		<img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
+      <img class="bi" id="reservation" width="63em" height="63em" src="../images/reservation.png"/>
         <h2>예약 목록</h2>
         <p>예약 목록을 보고 싶으시면 아래 버튼을 눌러주세요!</p>
         <a class="btn btn-secondary" type="submit" href="wishlist" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">예약 목록</a>
@@ -101,7 +101,8 @@ h2, h3,p {
         <img class="bi" id="review" width="63em" height="63em" src="../images/review.png"/>
         <h2>리뷰 쓰러 가기</h2>
         <p>방문하셨던 숙소의 리뷰를 쓰고 싶으시면 아래 버튼을 눌러주세요!</p>
-        <a class="btn btn-secondary" type="submit" href="review" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
+        <input type="hidden" name="mseq" value="${member.mseq}">
+        <a class="btn btn-secondary" type="submit" href="roomHistory?mseq=${member.mseq}" style="background-color: #2AC1BC!important;border-color: #2AC1BC!important;">리뷰 쓰러 가기</a>
       </div>
     </div>
   </div>

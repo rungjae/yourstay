@@ -20,10 +20,14 @@ import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Accomoption;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.Reservation;
+import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.MemberMapper;
+import yourstay.md.mapper.ReviewMapper;
 import yourstay.md.service.AccommodationService;
 import yourstay.md.service.MemberService;
 import yourstay.md.service.MyPageService;
+import yourstay.md.service.RoomHistoryService;
 
 @Log4j
 @AllArgsConstructor
@@ -36,6 +40,11 @@ public class MypageController {
 	private MemberMapper memberMapper;
 	@Autowired
 	private MyPageService myPageService;
+	@Autowired
+	ReviewMapper reviewMapper;
+	@Autowired
+	RoomHistoryService roomService;
+	
 	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
@@ -69,10 +78,23 @@ public class MypageController {
 		
 		return "mypage/wishlist";
     }
-	@GetMapping(value="/review")
-    public ModelAndView checkBook(ModelAndView mv){
-        log.info("MypageController -> checkBook 요청");
-        mv.setViewName("mypage/review");
+	@GetMapping(value="/roomHistory")
+    public ModelAndView roomHistory(long mseq){
+        log.info("MypageController -> roomHistory 요청");
+        List<Reservation> vo = roomService.getRoomList(mseq);
+        ModelAndView mv = new ModelAndView("mypage/roomHistory","vo",vo);
+        log.info("####vo:"+vo.toString());
+       
+        
+        return mv;
+    }
+   @GetMapping(value="/review")
+    public ModelAndView review(HttpSession session){
+        log.info("MypageController -> review 요청");
+        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
+        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
+        log.info("####vo:"+vo);
+        
         return mv;
     }
 }

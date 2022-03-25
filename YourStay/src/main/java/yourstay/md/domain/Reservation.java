@@ -15,4 +15,11 @@ public class Reservation {
 	private String rend;
 	private int rpeople;
 	private int price;
+	//accommodation
+    private String aname;
+    private String aloc;
+    private int aprice;
+    //member
+    private String mname;
+    private String memail;
 }

@@ -32,15 +32,6 @@ label {
 #chooseFile3 {
     visibility: hidden;
 }
-#chooseFile4 {
-    visibility: hidden;
-}
-#chooseFile5 {
-    visibility: hidden;
-}
-#chooseFile6 {
-    visibility: hidden;
-}
 
 .fileContainer {
     display: flex;
