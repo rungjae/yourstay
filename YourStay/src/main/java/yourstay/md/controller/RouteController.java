@@ -63,7 +63,9 @@ public class RouteController {
 	public ModelAndView searchDetail(@RequestParam Integer aid, @RequestParam String rstart,
 			@RequestParam String rend) {
 		log.info("RouteCon searchDetail //// Integer aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
-		resultVO resVO = mapper.getAccommodationByAccommodationId(aid);
+		List<resultVO> reslist = mapper.getAccommodationByAccommodationId(aid);
+		resultVO resVO = reslist.get(0);
+		log.info("searchDetail resVO : "+ resVO);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
 		long resultprice = priceService.resultPrice(resVO, diffDays);//숙박일수에 따른 최종 금액 계산
 		resVO.setResultprice(resultprice);//최종금액계산 적용
@@ -72,8 +74,8 @@ public class RouteController {
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용
 		resVO.setAid(aid);
 
-		log.info("resVO.getAid() : " + resVO.getAid());
-		log.info(resVO.toString());
+		log.info("searchDetail resVO.getAid() : " + resVO.getAid());
+		log.info("searchDetail resultVO: " + resVO.toString());
 		return new ModelAndView("info/info", "resVO", resVO);
 	}
 }

@@ -44,7 +44,8 @@ public class ReservationController {
 		log.info("reserdetailPage : " + aid);
 		log.info("ReservationCon reserdetailPage //// Integer aid : "  + aid+ ", startDate : "+ rstart+", endDate : "+ rend);
 	      
-		resultVO rVO = searchMapper.getAccommodationByAccommodationId(aid);
+		List<resultVO> rlist = searchMapper.getAccommodationByAccommodationId(aid);
+		resultVO rVO = rlist.get(0);
 		rVO.setRstart(rstart);//사용자선택 시작날짜 적용
 		rVO.setRend(rend);//사용자선택 끝날짜 적용
 		rVO.setDays(days);//숙박일수 적용
@@ -52,7 +53,7 @@ public class ReservationController {
 		rVO.setAid(aid);
 		
 		
-		log.info(rVO.toString());
+		log.info("reserdetailPage resultVO: " + rVO.toString());
 		return new ModelAndView("/reserdetail/reservation","rdetail",rVO);
 	}
 }

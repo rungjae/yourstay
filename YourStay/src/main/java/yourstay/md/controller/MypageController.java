@@ -94,9 +94,9 @@ public class MypageController {
         log.info("aid : " + aid+ "// mseq:" + mseq);
         List<reviewVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
         log.info("####vo:"+vo);
-        reviewVO resulutvo = vo.get(0);
-        resulutvo.setAid(aid); //유저가 선택한 숙소번호 입력
-        ModelAndView mv = new ModelAndView("mypage/review","member",resulutvo);
+        reviewVO reviewvo = vo.get(0);
+        reviewvo.setAid(aid); //유저가 선택한 숙소번호 입력
+        ModelAndView mv = new ModelAndView("mypage/review","member",reviewvo);
         
         return mv;
     }
