@@ -69,6 +69,9 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${vo}" var="vo">
+      <form action="review" method="get">
+      <input type="hidden" name="aid" value="${vo.aid}">
+      <input type="hidden" name="mseq" value="${vo.mseq}">
         <div class="col">
           <div class="card shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" >
@@ -78,17 +81,17 @@
               <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="review" type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</a>
+                  <button type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
                 </div>
               </div>
             </div>
           </div>
-        </div>  
+        </div>
+        </form>
         </c:forEach>
       </div>
     </div>
   </div>
-
 </main>
 
 <!-- 푸터 -->

@@ -182,8 +182,9 @@
 		<!-- 이미지 등록부분  -->
 		<form method="post" enctype="multipart/form-data"
 			action="/review/registerReview">
-			<input type="hidden" name="aid" value="${member.aid}"> <input
-				type="hidden" name="mseq" value="${member.mseq}">
+
+			<input type="hidden" name="aid" value="${member.aid}"> 
+			<input type="hidden" name="mseq" value="${member.mseq}">
 
 			<div class="container px-4 py-5" id="custom-cards">
 				<h2 class="pb-2 border-bottom">Review 이미지 등록</h2>
@@ -265,7 +266,6 @@
 					style="text-decoration: none">상단으로 올라가기</a>
 				</small>
 			</div>
-
 
 			<button class="btn btn-sm btn-outline-secondary" type="submit">등록하기</button>
 		</form>

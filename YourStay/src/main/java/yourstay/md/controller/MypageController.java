@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
@@ -89,11 +90,13 @@ public class MypageController {
         return mv;
     }
    @GetMapping(value="/review")
-    public ModelAndView review(HttpSession session){
-        log.info("MypageController -> review 요청");
-        reviewVO vo = reviewMapper.getUser((String)session.getAttribute("memail"));
-        ModelAndView mv = new ModelAndView("mypage/review","member",vo);
+    public ModelAndView review(HttpSession session, @RequestParam long aid, @RequestParam long mseq) {
+        log.info("aid : " + aid+ "// mseq:" + mseq);
+        List<reviewVO> vo = reviewMapper.getUser((String) session.getAttribute("memail"));
         log.info("####vo:"+vo);
+        reviewVO resulutvo = vo.get(0);
+        resulutvo.setAid(aid); //유저가 선택한 숙소번호 입력
+        ModelAndView mv = new ModelAndView("mypage/review","member",resulutvo);
         
         return mv;
     }
