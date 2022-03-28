@@ -13,20 +13,22 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.reviewVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	public static final String FILE_STORE="C:/git/YourStay/src/main/webapp/resources/images/";
+	public static final String FILE_STORE="C:/git/YourStay/src/main/webapp/resources/images/reviewImg/";
 	
-	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO, 
-			MultipartHttpServletRequest mpRequest) throws Exception{
+	//작성자별로 폴더 생성 하기 위한 메소드
+	public static String writerPath(reviewVO reviewVO) { 
+		final String FILE_FINAL_PATH = FILE_STORE+reviewVO.getRenum()+"/";
+		return FILE_FINAL_PATH;
+	}
 		
-		/*
-			Iterator은 데이터들의 집합체? 에서 컬렉션으로부터 정보를 얻어올 수 있는 인터페이스입니다.
-			List나 배열은 순차적으로 데이터의 접근이 가능하지만, Map등의 클래스들은 순차적으로 접근할 수가 없습니다.
-			Iterator을 이용하여 Map에 있는 데이터들을 while문을 이용하여 순차적으로 접근합니다.
-		*/
+	public List<Map<String, Object>> parseInsertFileInfo(reviewVO reviewVO,
+			MultipartHttpServletRequest mpRequest) throws Exception{
+
 		
 		Iterator<String> iterator = mpRequest.getFileNames();
 		
@@ -40,7 +42,7 @@ public class FileUtils {
 		
 		long renum = reviewVO.getRenum();
 		
-		File file = new File(FILE_STORE);
+		File file = new File(writerPath(reviewVO));
 		if(file.exists() == false) {
 			file.mkdirs();
 		}
@@ -52,7 +54,7 @@ public class FileUtils {
 				originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
 				storedFileName = getRandomString() + originalFileExtension;
 				
-				file = new File(FILE_STORE + storedFileName);
+				file = new File(writerPath(reviewVO) + storedFileName);
 				multipartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
 				listMap.put("renum", renum);

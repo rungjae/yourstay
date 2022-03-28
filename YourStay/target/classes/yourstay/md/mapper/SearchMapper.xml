@@ -24,13 +24,3 @@
 <!-- resultType : 결과반환 Object / return 값이라고 생각하면 될 듯?
 	 parameterType : 조회결과 Object
  -->
- <!-- 
- select * from accommodation where not exists (
-			select distinct aid, rdid, rdate 
-			from reservationdate 
-			where rdate between '2022-03-19'
-				and '2022-03-22'
-		) 
-		and aloc like '%가평%'
-		and apeople >= 3
-  -->

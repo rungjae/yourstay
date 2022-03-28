@@ -13,15 +13,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import oracle.jdbc.proxy.annotation.Post;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Accomoption;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.Reservation;
+import yourstay.md.domain.resultVO;
 import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.MemberMapper;
 import yourstay.md.mapper.ReviewMapper;
@@ -42,9 +46,9 @@ public class MypageController {
 	@Autowired
 	private MyPageService myPageService;
 	@Autowired
-	ReviewMapper reviewMapper;
+	private ReviewMapper reviewMapper;
 	@Autowired
-	RoomHistoryService roomService;
+	private RoomHistoryService roomService;
 	
 	
 	@GetMapping(value="/home")
@@ -54,20 +58,24 @@ public class MypageController {
         ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
     }
-	@PostMapping("/register.do")
-	public String roomRegister(ModelAndView mv, Accomoption aco, Accommodation ac, Image img, String memail) {
-		log.info("roomOption Data -> info 전달");
-		log.info("로그인한 회원의 메일: " + memail);
-		MemberVO member = memberMapper.getUser(memail);
-		log.info("로그인한 회원의  메일: " + member.getMemail()+", 회원의 번호: "+ member.getMseq() +", 회원의 이름: "+member.getMname());
-//		MemberVO member = accommodationService.getRegisterMemberSeqS(mseq);
-//		accommodationService.insertImageS(img);// 이미지 테이블에 insert
-//		ac.setMseq(member.getMseq());//insert할 회원번호 설정(숙소등록하는 회원번호)
-//		accommodationService.insertAccommodationS(ac);// 숙소  테이블에 insert
-//		accommodationService.insertAccomoptionS(aco); // 숙소옵션 테이블에 insert
-//		log.info("옵션번호: "+ aco.getAid() +", 숙소번호 : "+aco.getOid()+", 방개수 : "+aco.getRnum()+", TV유무 : "+ aco.getTv());
-		//여기에  info페이지로 값을 전달 
-		return "redirect:home";
+	@PostMapping(value="/register.do")
+	   public ModelAndView roomRegister(ModelAndView mv, resultVO registervo){
+	      log.info("roomOption Data -> info 전달");
+//	      log.info("로그인한 회원의 번호: " + mseq);
+	      log.info("result aname: " + registervo.getAname());
+//	      log.info("aname: " + aname);
+//	      accommodationService.inssertImageS(img);// 이미지 테이블에 insert
+//	      accommodationService.insertAccommodationS(ac, mpRequest);// 숙소  테이블에 insert
+//	      log.info("옵션번호: "+ aco.getAid() +", 숙소번호 : "+aco.getOid()+", 방개수 : "+aco.getRnum()+", TV유무 : "+ aco.getTv());
+	      //여기에  info페이지로 값을 전달 
+	      mv.setViewName("mypage/home");
+	      return mv;
+	   }
+	
+	@PostMapping(value="/regi")
+	public String test() {
+		log.info("test");
+		return null;
 	}
 	
 	@GetMapping(value="/wishlist/{mseq}")
@@ -108,6 +116,15 @@ public class MypageController {
        ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
        log.info("####vo:"+vo.toString());
        
+       return mv;
+   }
+   
+   
+   @GetMapping(value="/roomRegister")
+   public ModelAndView roomRegister(@RequestParam long mseq) {
+	   resultVO vo = reviewMapper.select(mseq);
+	   log.info("MypageController -> roomRegister: "+ vo);
+	   ModelAndView mv = new ModelAndView("room/roomRegister","vo",vo);
        return mv;
    }
 }
