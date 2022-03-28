@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import lombok.extern.log4j.Log4j;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.resultVO;
+import yourstay.md.domain.reviewVO;
 import yourstay.md.mapper.SearchMapper;
 import yourstay.md.service.PriceService;
 
@@ -60,10 +61,14 @@ public class RouteController {
 	}
 
 	@RequestMapping(value = "roomDetailInfo", method = RequestMethod.GET)
-	public ModelAndView searchDetail(@RequestParam Integer aid, @RequestParam String rstart,
+	public ModelAndView searchDetail(@RequestParam long aid, @RequestParam String rstart,
 			@RequestParam String rend) {
-		log.info("RouteCon searchDetail //// Integer aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
+		ModelAndView mv = new ModelAndView();
+		log.info("RouteCon searchDetail ////  aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
 		List<resultVO> reslist = mapper.getAccommodationByAccommodationId(aid);
+		List<reviewVO>  reviewlist = mapper.getReviewByAccommodationId(aid);
+		log.info("searchDetail reviewlist : "+ reviewlist);
+		log.info("searchDetail reslist : "+ reslist);
 		resultVO resVO = reslist.get(0);
 		log.info("searchDetail resVO : "+ resVO);
 		long diffDays = priceService.daysCalc(rstart, rend);// 숙박일수 계산
@@ -73,9 +78,12 @@ public class RouteController {
 		resVO.setRend(rend);// 사용자선택 끝날짜 적용
 		resVO.setDays(diffDays);// 사용자선택 숙박일수 적용
 		resVO.setAid(aid);
-
+		mv.addObject("reslist", reviewlist);//리뷰리스트 전달
+		mv.addObject("resVO", resVO);//숙소정보 전달
+		mv.setViewName("info/info");
 		log.info("searchDetail resVO.getAid() : " + resVO.getAid());
 		log.info("searchDetail resultVO: " + resVO.toString());
-		return new ModelAndView("info/info", "resVO", resVO);
+
+		return mv;
 	}
 }

@@ -105,6 +105,7 @@ public class LoginController {
    }
 	@PostMapping("loginCheck.do")
 	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
+//		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
 		String memail = request.getParameter("memail");
 		String mpwd = request.getParameter("mpwd");
 		ModelAndView mv = new ModelAndView();
@@ -115,11 +116,11 @@ public class LoginController {
 		
 		if(result == YES_ID_PWD) { //로그인 성공시
 			log.info("로그인 성공");	
-			mv.setViewName("index");
 			MemberVO m = mapper.getUser(memail);
 			session = request.getSession();
 			mv.addObject("msg", "success");
 			session.setAttribute("memail", memail);
+			mv.setViewName("index");
 			session.setAttribute("loginOkUser", m);
 			log.info("m: "+m);
 //			resultVO resVO = searchMapper.getAccommodationByAccommodationId(aid);

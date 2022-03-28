@@ -99,9 +99,9 @@ p {
 							<%
 								} else {
 							%>
-							<p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님
+							<a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail%>님
 								반갑습니다!
-							</p>
+							</a>
 							<a href="/login/logout.do" class="btn btn-secondary"
 								style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">로그아웃</a>
 							<%
@@ -109,9 +109,9 @@ p {
 							%>
 						</c:when>
 						<c:otherwise>
-							<p style="margin-top: 3%; margin-right: 3%;"><%=memail%>님
+							<a style="margin-top: 3%; margin-right: 3%;" href="/mypage/home"><%=memail%>님
 								반갑습니다!
-							</p>
+							</a>
 							<a href="/login/logout.do" class="btn btn-secondary"
 								style="background-color: #2AC1BC !important; border-color: #2AC1BC !important;">로그아웃</a>
 						</c:otherwise>

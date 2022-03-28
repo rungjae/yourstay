@@ -18,4 +18,6 @@ public class Accommodation {
 	private int iid;
 	private long mseq;
 	private String anotice;
+	private double ax;
+	private double ay;
 }

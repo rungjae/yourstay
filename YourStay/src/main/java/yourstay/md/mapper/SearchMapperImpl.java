@@ -13,6 +13,7 @@ import lombok.extern.log4j.Log4j;
 import sun.util.logging.resources.logging;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.resultVO;
+import yourstay.md.domain.reviewVO;
 @Log4j
 @Primary
 @Repository
@@ -37,5 +38,10 @@ public class SearchMapperImpl implements SearchMapper {
 	public List<resultVO> getAccommodationByAccommodationId(long aid) {
 		log.info("SearchMapperImpl  getAccommodationByAccommodationId aid : "+ aid);
 		return session.selectList("yourstay.md.mapper.SearchMapper.getAccommodationByAccommodationId", aid);
+	}
+	@Override
+	public List<reviewVO> getReviewByAccommodationId(long aid) {
+		log.info("SearchMapperImpl  getReviewByAccommodationId aid : "+ aid);
+		return session.selectList("yourstay.md.mapper.SearchMapper.getReviewByAccommodationId", aid);
 	}
 }

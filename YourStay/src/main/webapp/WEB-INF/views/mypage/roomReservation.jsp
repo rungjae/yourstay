@@ -78,10 +78,9 @@
             <image class="cover" href="/resources/images/reservation30.jpg"/>
             </svg>
             <div class="card-body">
-              <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}</p>
+              <p class="card-text">숙소 위치: ${vo.aloc}<br/>숙소 이름: ${vo.aname}<br/>숙소기간: ${vo.rstart} ~ ${vo.rend}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="submit" class="btn btn-sm btn-outline-secondary" style="padding: 5px 30px;">View</button>
                 </div>
               </div>
             </div>

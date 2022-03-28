@@ -133,32 +133,32 @@ div.list-font {
                    "person" : person1
                 };
                 
-		    	 $("#godetail").on("keydown", function(){
-		    		 $.ajax({
-		    			 url: "roomDetailInfo", 
-		    			 type: "GET", 
-		    			 data : jData1,
-		    			 dataType : 'json',
-		    			 success: function(data){
-		    				 result = data;
-		    	               $.each(data, function(idx, item) {
-		    	                  if(data==null){
-		    	                     $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
+              $("#godetail").on("keydown", function(){
+                 $.ajax({
+                    url: "roomDetailInfo", 
+                    type: "GET", 
+                    data : jData1,
+                    dataType : 'json',
+                    success: function(data){
+                       result = data;
+                            $.each(data, function(idx, item) {
+                               if(data==null){
+                                  $("<b>예약 가능한 숙소가 없습니다.</b>").appendTo("#contentInput");
 
-		    	                  }else{
-		    	                     $("<div class='item'><div class='itemPic'><a href='searchDetail.do?aid=" + item.aid + "'></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
-		    	                     .appendTo("#contentInput");
+                               }else{
+                                  $("<div class='item'><div class='itemPic'><a href='searchDetail.do?aid=" + item.aid + "'></div><div class='itemCost'><h5>" + item.aprice + "원</h5></div><div class='itemTitle'><h5>" + item.aname + "</h5></div><div class='itemRecommandPoint'></div></div>")
+                                  .appendTo("#contentInput");
 
-		    	                  }
-		    	                  
-		    	               });
-		    	               $('#hiddenCity').val(city1);
-		    	               $('#hiddenStartDate').val(startDate1);
-		    	               $('#hiddenEndDate').val(endDate1);
-		    	               $('#hiddenPerson').val(person1);
-		    			 }
-		    		 });
-		    	 });
+                               }
+                               
+                            });
+                            $('#hiddenCity').val(city1);
+                            $('#hiddenStartDate').val(startDate1);
+                            $('#hiddenEndDate').val(endDate1);
+                            $('#hiddenPerson').val(person1);
+                    }
+                 });
+              });
              });
 </script>
 <%
@@ -264,7 +264,7 @@ div.list-font {
                style="cursor: pointer;">
       </div>
       </form>
-   		<c:forEach items="${acvo}" var="acvo">
+         <c:forEach items="${acvo}" var="acvo">
          <div
             class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
             style="width: 50%;">
@@ -292,8 +292,10 @@ div.list-font {
       </div>
    </c:forEach>
    </div>
-   <div class="map-area">
-      <div id="map" style="width: 680px; height: 580px;"></div>
+   <div class="map-area" style="    bottom: -58% !important;
+    position: absolute !important;
+    left: 53% !important;">
+      <div id="map" style="width: 600px; height: 530px;"></div>
       <script type="text/javascript"
          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b87f2182c111fec7ca0b3a2aaede2356"></script>
       <script>

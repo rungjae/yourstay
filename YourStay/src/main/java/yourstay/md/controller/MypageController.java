@@ -100,4 +100,14 @@ public class MypageController {
         
         return mv;
     }
+   
+   @GetMapping(value="/roomReservation")
+   public ModelAndView roomReservation(long mseq){
+       log.info("MypageController -> roomReservation 요청");
+       List<Reservation> vo = roomService.getRoomList(mseq);
+       ModelAndView mv = new ModelAndView("mypage/roomReservation","vo",vo);
+       log.info("####vo:"+vo.toString());
+       
+       return mv;
+   }
 }
