@@ -15,18 +15,19 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.reviewVO;
+import yourstay.md.domain.roomRegisterVO;
 
-@Component("roomfileUtils")
+@Component("roomFileUtils")
 public class RoomFileUtils {
-   public static final String FILE_STORE="C:/heejin/Final/image/roomImg/";
+   public static final String FILE_STORE="C:/git/YourStay/src/main/webapp/resources/images/roomImg/";
    
    //작성자별로 폴더 생성 하기 위한 메소드
-   public static String writerPath(Accommodation accommodation) { 
-      final String FILE_FINAL_PATH = FILE_STORE+accommodation.getIid()+"/";
+   public static String writerPath(roomRegisterVO roomregisterVo) { 
+      final String FILE_FINAL_PATH = FILE_STORE+roomregisterVo.getAid()+"/";
       return FILE_FINAL_PATH;
    }
       
-   public List<Map<String, Object>> parseInsertFileInfo(Accommodation accommodation,
+   public List<Map<String, Object>> parseInsertFileInfo(roomRegisterVO roomregisterVo,
          MultipartHttpServletRequest mpRequest) throws Exception{
 
       
@@ -40,9 +41,10 @@ public class RoomFileUtils {
       List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
       Map<String, Object> listMap = null;
       
-      long iid = accommodation.getIid();
+      long iid = roomregisterVo.getIid();
+      long aid = roomregisterVo.getAid();
       
-      File file = new File(writerPath(accommodation));
+      File file = new File(writerPath(roomregisterVo));
       if(file.exists() == false) {
          file.mkdirs();
       }
@@ -54,13 +56,14 @@ public class RoomFileUtils {
             originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
             storedFileName = getRandomString() + originalFileExtension;
             
-            file = new File(writerPath(accommodation) + storedFileName);
+            file = new File(writerPath(roomregisterVo) + storedFileName);
             multipartFile.transferTo(file);
             listMap = new HashMap<String, Object>();
             listMap.put("iid", iid);
             listMap.put("org_file_name", originalFileName);
             listMap.put("stored_file_name", storedFileName);
-            listMap.put("file_size", multipartFile.getSize());
+            listMap.put("file_path", writerPath(roomregisterVo));
+            listMap.put("aid", aid);
             list.add(listMap);
          }
       }

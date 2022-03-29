@@ -4,13 +4,17 @@ import java.util.Map;
 
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.roomRegisterVO;
 
 public interface AccommodationMapper {
 
    /*
     * 숙소 테이블에 등록
     */
-   public void insert(Accommodation ac);
+   public void insertAccom(roomRegisterVO roomregisterVo);
+   
+   public void insertOption(roomRegisterVO roomregisterVo);
+   public void insertUtil(roomRegisterVO roomregisterVo);
    
 
    /*

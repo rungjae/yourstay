@@ -5,12 +5,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.roomRegisterVO;
 
 public interface AccommodationService {
    /*
     * 숙소 테이블에 등록
     */
-   public void insertAccommodationS(Accommodation ac, MultipartHttpServletRequest mpRequest) throws Exception;
+   public void insertAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception;
    
 
    /*

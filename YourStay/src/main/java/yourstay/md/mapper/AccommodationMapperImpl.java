@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.MemberVO;
+import yourstay.md.domain.roomRegisterVO;
 
 public class AccommodationMapperImpl implements AccommodationMapper {
    
@@ -14,8 +15,20 @@ public class AccommodationMapperImpl implements AccommodationMapper {
    SqlSession session;
    
    @Override
-   public void insert(Accommodation ac) {
-      session.insert("yourstay.md.mapper.AccommodationMapper.insert",ac);
+   public void insertAccom(roomRegisterVO roomregisterVo) {
+      session.insert("yourstay.md.mapper.AccommodationMapper.insertAccom",roomregisterVo);
+
+   }
+   
+   @Override
+   public void insertOption(roomRegisterVO roomregisterVo) {
+      session.insert("yourstay.md.mapper.AccommodationMapper.insertOption",roomregisterVo);
+
+   }
+   
+   @Override
+   public void insertUtil(roomRegisterVO roomregisterVo) {
+      session.insert("yourstay.md.mapper.AccommodationMapper.insertUtil",roomregisterVo);
 
    }
 
@@ -30,5 +43,6 @@ public class AccommodationMapperImpl implements AccommodationMapper {
       // TODO Auto-generated method stub
       return null;
    }
+
 
 }

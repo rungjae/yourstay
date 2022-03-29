@@ -62,7 +62,6 @@ p {
       input.aname.focus();
    }
 </script>
-
 <body>
 
    <div class="container">
@@ -593,15 +592,18 @@ p {
                         <p class="card-text mb-auto">Please add your accomodation's
                            Image.</p>
                      </div>
-                     <input class="form-control me-2" type='file' id="ipath1" name='ipath1' size="60"
+                     <input class="form-control me-2" type="file" id="ipath1" size="60" name="file"
                         placeholder="Room's Image"
-                        style="margin-bottom: 1%; height: 8%;">  <input
-                        class="form-control me-2" type='file' id="ipath2" name='ipath2' size="60"
+                        style="margin-bottom: 1%; height: 8%;"> 
+                     
+                     <input class="form-control me-2" type="file" id="ipath2" size="60" name="file"
                         placeholder="Room's Image"
-                        style="margin-bottom: 1%; height: 8%;"> <input
-                        class="form-control me-2" type='file' id="ipath3" name='ipath3' size="60"
+                        style="margin-bottom: 1%; height: 8%;"> 
+                       
+                     <input class="form-control me-2" type="file" id="ipath3" size="60" name="file"
                         placeholder="Room's Image"
                         style="margin-bottom: 1%; height: 8%;">
+                        
                   </div>
                </div>
                <div class="col-md-6" style="width: 33%;">
