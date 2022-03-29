@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -56,7 +57,11 @@ public class MypageController {
     }
 	@PostMapping(value="/register.do")
 	   public ModelAndView roomRegister(ModelAndView mv, roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest)throws Exception {
-	      log.info("roomOption Data -> info 전달");
+		List<MultipartFile> fileList = mpRequest.getFiles("file");
+		for (MultipartFile mf : fileList) {
+            accommodationService.insertAccommodationS(roomregisterVo, mpRequest);
+        }
+		log.info("roomOption Data -> info 전달");
 //	      log.info("로그인한 회원의 번호: " + mseq);
 	      log.info("roomregisterVo: " + roomregisterVo);
 	      accommodationService.insertAccommodationS(roomregisterVo, mpRequest);

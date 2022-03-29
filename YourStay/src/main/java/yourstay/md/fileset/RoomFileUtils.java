@@ -65,6 +65,7 @@ public class RoomFileUtils {
             listMap.put("file_path", writerPath(roomregisterVo));
             listMap.put("aid", aid);
             list.add(listMap);
+            System.out.println("list : "+list);
          }
       }
       return list;

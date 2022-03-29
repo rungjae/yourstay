@@ -592,15 +592,15 @@ p {
                         <p class="card-text mb-auto">Please add your accomodation's
                            Image.</p>
                      </div>
-                     <input class="form-control me-2" type="file" id="ipath1" size="60" name="file"
+                     <input class="form-control me-2" multiple="multiple" type="file" id="ipath1" size="60" name="file"
                         placeholder="Room's Image"
                         style="margin-bottom: 1%; height: 8%;"> 
                      
-                     <input class="form-control me-2" type="file" id="ipath2" size="60" name="file"
+                     <input class="form-control me-2" multiple="multiple" type="file" id="ipath2" size="60" name="file"
                         placeholder="Room's Image"
                         style="margin-bottom: 1%; height: 8%;"> 
                        
-                     <input class="form-control me-2" type="file" id="ipath3" size="60" name="file"
+                     <input class="form-control me-2" multiple="multiple" type="file" id="ipath3" size="60" name="file"
                         placeholder="Room's Image"
                         style="margin-bottom: 1%; height: 8%;">
                         
