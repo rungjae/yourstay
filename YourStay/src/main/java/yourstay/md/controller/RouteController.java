@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.resultVO;
@@ -49,9 +50,16 @@ public class RouteController {
 			@RequestParam String deadline, @RequestParam String person) {
 		log.info(aloc + " " + startdate + " " + deadline + " " + person);
 		int p = Integer.parseInt(person);
-
 		List<Accommodation> acvo = mapper.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
-		log.info(acvo.size());
+		log.info("List<Accommodation> acvo size : "+ acvo.size());
+		for(Accommodation ac:acvo) {//숙소리스트 이미지	
+			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
+			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
+			log.info("searchGetFromMain ///roomImage: " + roomImage);
+			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
+			ac.setIpath1(roomImage.get(0).getStored_file_name());
+		}	
+//		log.info("acvo 3번째 : "+acvo.get(3).getIpath1());
 		log.info(acvo.toString());
 		ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
 		mv.setViewName("searchList");

@@ -11,9 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.log4j.Log4j;
 import yourstay.md.dao.interfaces.ReservationDAO;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.Reservation;
 import yourstay.md.domain.resultVO;
 import yourstay.md.mapper.SearchMapper;
+import yourstay.md.service.AccommodationService;
 
 @Controller
 @RequestMapping("/res")
@@ -23,6 +25,9 @@ public class ReservationController {
 	ReservationDAO reservationDAO;
 	@Autowired
 	SearchMapper searchMapper;
+	@Autowired
+	AccommodationService accommodationService;
+
 	/*
 	 * 숙소상세페이지에서 사용자 선택값을들 넘겨받아야함
 	 */
@@ -43,9 +48,11 @@ public class ReservationController {
 	public ModelAndView reserdetailPage(@RequestParam Integer aid, @RequestParam String rstart, @RequestParam String rend, @RequestParam long resultprice, @RequestParam long days) {
 		log.info("reserdetailPage : " + aid);
 		log.info("ReservationCon reserdetailPage //// Integer aid : "  + aid+ ", startDate : "+ rstart+", endDate : "+ rend);
-	      
+		List<Image> roomImage = accommodationService.selectRoomImageS(aid); //숙소이미지
+		String ipath1 = roomImage.get(0).getStored_file_name(); 
 		List<resultVO> rlist = searchMapper.getAccommodationByAccommodationId(aid);
 		resultVO rVO = rlist.get(0);
+		rVO.setIpath1(ipath1);
 		rVO.setRstart(rstart);//사용자선택 시작날짜 적용
 		rVO.setRend(rend);//사용자선택 끝날짜 적용
 		rVO.setDays(days);//숙박일수 적용

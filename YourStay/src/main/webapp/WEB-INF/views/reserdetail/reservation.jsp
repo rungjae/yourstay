@@ -55,11 +55,11 @@
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5 ">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://dummyimage.com/900x400/dee2e6/6c757d.jpg" alt="..." /></div>
-                <div class="col-lg-5">
+                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0" src="../../../resources/images/roomImg/${rdetail.aid}/${rdetail.ipath1}" alt="..." /></div>
+                <div class="col-lg-7">
                     <h6 class="font-weight-light">${rdetail.aname}</h6>
                     </br>
-                    <h3>숙소정보</h3>
+                    <h3>${rdetail.anotice}</h3>
                     </br>
                  	<span class="badge bg-warning text-dark">${rdetail.apoint}</span>
                 </div>
