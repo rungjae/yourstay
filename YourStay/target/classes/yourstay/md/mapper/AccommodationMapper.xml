@@ -60,6 +60,11 @@
                               , #{aid}
                                )
     </insert>
+    
+    <!-- 숙소 이미지 불러오기 -->
+    <select id="selectRoomImage" resultType="yourstay.md.domain.Image">
+    	select * from image where aid=#{aid}
+    </select>
 
       <!-- 숙소 옵션 등록
    <insert id="insertAccomoption"

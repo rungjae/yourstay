@@ -583,29 +583,19 @@ p {
 
                <div class="col-md-6" style="width: 33%;">
                   <div
-                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
-                     style="height: 500px;">
+                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's Image</h3>
-                        <p class="card-text mb-auto">Please add your accomodation's
-                           Image.</p>
+                        <h3 class="mb-0">숙소 이미지</h3>
+                        <p class="card-text mb-auto">숙소 이미지를 넣어주세요</p>
                      </div>
                      <input class="form-control me-2" multiple="multiple" type="file" id="ipath1" size="60" name="file"
                         placeholder="Room's Image"
-                        style="margin-bottom: 1%; height: 8%;"> 
-                     
-                     <input class="form-control me-2" multiple="multiple" type="file" id="ipath2" size="60" name="file"
-                        placeholder="Room's Image"
-                        style="margin-bottom: 1%; height: 8%;"> 
-                       
-                     <input class="form-control me-2" multiple="multiple" type="file" id="ipath3" size="60" name="file"
-                        placeholder="Room's Image"
-                        style="margin-bottom: 1%; height: 8%;">
-                        
+                        style="margin-bottom: 6%; height: 16%;"> 
                   </div>
                </div>
+               
                <div class="col-md-6" style="width: 33%;">
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

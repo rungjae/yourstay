@@ -1,11 +1,13 @@
 package yourstay.md.mapper;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import yourstay.md.domain.Accommodation;
+import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.roomRegisterVO;
 
@@ -43,6 +45,12 @@ public class AccommodationMapperImpl implements AccommodationMapper {
       // TODO Auto-generated method stub
       return null;
    }
+
+	@Override
+	public List<Image> selectRoomImage(long aid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
