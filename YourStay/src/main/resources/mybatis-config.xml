@@ -10,6 +10,6 @@
 		<typeAlias alias ="WishListVO" type="yourstay.md.domain.WishListVO"/>
 		<typeAlias alias ="Accommodation" type="yourstay.md.domain.Accommodation"/>
 		<typeAlias alias ="Reservation" type="yourstay.md.domain.Reservation"/>
-		<typeAlias alias ="ReservationDate" type="yourstay.md.domain.ReservationDate"/>
+		<typeAlias alias ="ReservationDateVO" type="yourstay.md.domain.ReservationDateVO"/>
 	</typeAliases>
 </configuration>

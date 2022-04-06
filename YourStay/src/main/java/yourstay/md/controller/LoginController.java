@@ -108,6 +108,7 @@ public class LoginController {
 //		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
 		String memail = request.getParameter("memail");
 		String mpwd = request.getParameter("mpwd");
+	
 		ModelAndView mv = new ModelAndView();
 		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
 		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
@@ -120,6 +121,7 @@ public class LoginController {
 			session = request.getSession();
 			mv.addObject("msg", "success");
 			session.setAttribute("memail", memail);
+			session.setAttribute("mseq", m.getMseq());
 			mv.setViewName("index");
 			session.setAttribute("loginOkUser", m);
 			log.info("m: "+m);

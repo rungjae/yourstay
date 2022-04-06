@@ -18,6 +18,6 @@ public class MemberVO {
 	
 	@Override
 	public String toString() {
-		return "MemberVO [memail=" + memail + ", mname=" + mname + ", mpwd=" + mpwd + "]";
+		return "MemberVO [mseq=" + mseq + ", memail=" + memail + ", mname=" + mname + ", mpwd=" + mpwd + "]";
 	}
 }

@@ -22,4 +22,6 @@ public class Reservation {
     //member
     private String mname;
     private String memail;
+    //reservationdate
+    private String rdate;
 }
