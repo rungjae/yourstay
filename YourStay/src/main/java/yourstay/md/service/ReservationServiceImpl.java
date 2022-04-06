@@ -22,45 +22,42 @@ public class ReservationServiceImpl implements ReservationService {
 	 * 예약테이블 등록
 	 */
 	@Override
-	public Reservation insertReservationS(Reservation reservationVO) {
-		return reservationMapper.insertReservation(reservationVO);
+	public void insertReservationS(Reservation reservationVO) {
+		reservationMapper.insertReservation(reservationVO);
 	}
 	/*
 	 * 예약날짜테이블 등록
 	 */
 	@Override
-	public ReservationDateVO insertReservationDateS(long rid, long aid, String rdate) {
-		return reservationMapper.insertReservationDate(rid, aid, rdate);
+	public void insertReservationDateS(ReservationDateVO rdateVO) {
+		reservationMapper.insertReservationDate(rdateVO);
 	}
 	/*
 	 * 예약날짜테이블 조회
 	 */
 	@Override
-	public List<ReservationDateVO> selectReservationDateS(long aid, String rstart, String rend) {
-		reservationMapper.selectReservationDate(aid, rstart, rend);
+	public List<ReservationDateVO> selectReservationDateS(Reservation reservationVO) {
+		reservationMapper.selectReservationDate(reservationVO);
 		return null;
 	}
 	@Override
-	public List<ReservationDateVO> ReservationDateS(Reservation reservationVO) {
+	public void ReservationDateS(Reservation reservationVO) {
 		ArrayList<String> selectDateList = (ArrayList<String>) DateMaker.getDateList(reservationVO.getRstart(), reservationVO.getRend());
-		log.error("ReservationDateS// selectDateList.size() : " + selectDateList.size());
-		log.error("ReservationDateS// reservationVO : " + reservationVO);
-		ArrayList<ReservationDateVO> checkList = (ArrayList<ReservationDateVO>) reservationMapper.selectReservationDate(reservationVO.getAid(), reservationVO.getRstart(), reservationVO.getRend());
-		log.error("ReservationDateS// checkList.size() : " + checkList.size());
-		
-		if(checkList != null) { //사용자 입력 값이 예약테이블에 없으면
+		ArrayList<ReservationDateVO> checkList = (ArrayList<ReservationDateVO>) reservationMapper.selectReservationDate(reservationVO);
+		ReservationDateVO rdateVO = new ReservationDateVO();
+		if(checkList.size() != 0) { //사용자 입력 값이 예약테이블에 없으면
 			log.error("예약불가합니다");
 		}else {
-			//예약가능
+			//예약가능1
 			log.error("예약가능합니다");
 			reservationMapper.insertReservation(reservationVO);
-			log.error("insertReservation완료");
-			for(String stringdate : selectDateList) {
-				log.error("insertReservationDate for문");
-				reservationMapper.insertReservationDate(reservationVO.getRid(),reservationVO.getAid(), stringdate);
+			rdateVO.setAid(reservationVO.getAid());
+			rdateVO.setRid(reservationVO.getRid());
+			for(int i = 0; i<selectDateList.size(); i++) {
+				rdateVO.setRdate(selectDateList.get(i));
+				reservationMapper.insertReservationDate(rdateVO);
 			}
 		}
-		return null;
 	}
 
 }
