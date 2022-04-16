@@ -42,35 +42,39 @@ public class LoginController {
 	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){
-        log.info("Logincontroller -> loginPage ë¡œê·¸ì¸ ì‹œë„ ìš”ì²­");
+        log.info("Logincontroller -> loginPage ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
         mv.setViewName("login/loginPage");
         return mv;
     }
-//	@PostMapping("loginCheck.do")
-//    public ModelAndView loginCheck(@RequestParam String memail, String mpwd, HttpSession session, HttpServletRequest request){
-//        System.out.println(memail + "   " + mpwd);	
-//		boolean result = mapper.login(memail, mpwd);
-//        ModelAndView mav = new ModelAndView();
-//        if (result == true) { // ë¡œê·¸ì¸ ì„±ê³µ
-//            // main.jspë¡œ ì´ë™
-//            mav.setViewName("info/info");
-//            mav.addObject("msg", "success");
-//            session.setAttribute("memail", memail);
-//            session.setAttribute("mpwd", mpwd);
-//        } else {    // ë¡œê·¸ì¸ ì‹¤íŒ¨
-//            // login.jspë¡œ ì´ë™
-//            mav.setViewName("login");
-//            mav.addObject("msg", "failure");
-//            session.setAttribute("memail", null);
-//            session.setAttribute("mpwd", null);
-//        }
-//        
-//        return mav;
-//    }
+
+	@PostMapping("loginCheck.do")
+	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
+//		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
+		String memail = request.getParameter("memail");
+		String mpwd = request.getParameter("mpwd");
+		ModelAndView mv = new ModelAndView();
+		//À¯È¿¼º °Ë»ç(Å¬¶óÀÌ¾ğÆ®Ãø View:js, ¼­¹öÃø Controller:java)
+		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
+		int result = mapper.login(memail, mpwd);
+		log.info("·Î±×ÀÎ °á°ú(3>¼º°ø) : " + result);		
+		
+		if(result == YES_ID_PWD) { //·Î±×ÀÎ ¼º°ø½Ã
+			log.info("·Î±×ÀÎ ¼º°ø");	
+			MemberVO m = mapper.getUser(memail);
+			session = request.getSession();
+			mv.addObject("msg", "success");
+			session.setAttribute("memail", m.getMemail());
+			session.setAttribute("mseq", m.getMseq());
+			session.setAttribute("loginOkUser", m);
+			log.info("m: "+m);
+		}
+		mv = new ModelAndView("msg", "result", result);
+		return mv;
+	}
 	
-	@RequestMapping("logout.do")
+	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
-		log.info("ë¡œê·¸ì•„ì›ƒ ì„¸ì…˜ nullì²˜ë¦¬");
+		log.info("·Î±×¾Æ¿ô ¼¼¼Ç nullÃ³¸®");
 //		session.setAttribute("memail", null);
 //		session.setAttribute("mpwd", null);
 		session.invalidate();
@@ -78,11 +82,11 @@ public class LoginController {
 	}
 	@GetMapping(value="/joinPage")
     public ModelAndView requestJoin(ModelAndView mv){
-        log.info("Logincontroller -> requestLogin ë¡œê·¸ì¸ ì‹œë„ ìš”ì²­");
+        log.info("Logincontroller -> requestLogin ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
         mv.setViewName("login/joinPage");
         return mv;
     }
-	@RequestMapping("join.do")
+	@PostMapping("join.do")
 	public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
    
 	   MemberVO memberVo = mapper.getUser(memail);
@@ -103,35 +107,5 @@ public class LoginController {
          return mav;
       }
    }
-	@PostMapping("loginCheck.do")
-	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
-//		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
-		String memail = request.getParameter("memail");
-		String mpwd = request.getParameter("mpwd");
-	
-		ModelAndView mv = new ModelAndView();
-		//ìœ íš¨ì„± ê²€ì‚¬(í´ë¼ì´ì–¸íŠ¸ì¸¡ View:js, ì„œë²„ì¸¡ Controller:java)
-		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
-		int result = mapper.login(memail, mpwd);
-		log.info("ë¡œê·¸ì¸ ê²°ê³¼(1>ì„±ê³µ) : " + result);		
-		
-		if(result == YES_ID_PWD) { //ë¡œê·¸ì¸ ì„±ê³µì‹œ
-			log.info("ë¡œê·¸ì¸ ì„±ê³µ");	
-			MemberVO m = mapper.getUser(memail);
-			session = request.getSession();
-			mv.addObject("msg", "success");
-			session.setAttribute("memail", memail);
-			session.setAttribute("mseq", m.getMseq());
-			mv.setViewName("index");
-			session.setAttribute("loginOkUser", m);
-			log.info("m: "+m);
-//			resultVO resVO = searchMapper.getAccommodationByAccommodationId(aid);
-//	        System.out.println(resVO.toString()); 
-//	        new ModelAndView("info/info","resVO",resVO);
-		}else { // ë¡œê·¸ì¸ ì‹¤íŒ¨ì‹œ
-			log.info("ë¡œê·¸ì¸ ì‹¤íŒ¨");
-			mv.setViewName("login_check_module");
-		}
-		return mv;
-	}
+
 }

@@ -19,21 +19,21 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	ReservationMapper reservationMapper;
 	/*
-	 * 예약테이블 등록
+	 * �������̺� ���
 	 */
 	@Override
 	public void insertReservationS(Reservation reservationVO) {
 		reservationMapper.insertReservation(reservationVO);
 	}
 	/*
-	 * 예약날짜테이블 등록
+	 * ���೯¥���̺� ���
 	 */
 	@Override
 	public void insertReservationDateS(ReservationDateVO rdateVO) {
 		reservationMapper.insertReservationDate(rdateVO);
 	}
 	/*
-	 * 예약날짜테이블 조회
+	 * ���೯¥���̺� ��ȸ
 	 */
 	@Override
 	public List<ReservationDateVO> selectReservationDateS(Reservation reservationVO) {
@@ -45,11 +45,11 @@ public class ReservationServiceImpl implements ReservationService {
 		ArrayList<String> selectDateList = (ArrayList<String>) DateMaker.getDateList(reservationVO.getRstart(), reservationVO.getRend());
 		ArrayList<ReservationDateVO> checkList = (ArrayList<ReservationDateVO>) reservationMapper.selectReservationDate(reservationVO);
 		ReservationDateVO rdateVO = new ReservationDateVO();
-		if(checkList.size() != 0) { //사용자 입력 값이 예약테이블에 없으면
-			log.error("예약불가합니다");
+		if(checkList.size() != 0) { //기존 예약날짜와 중복된 날짜가 1개라도있을시에
+			log.error("예약불가");
 		}else {
-			//예약가능1
-			log.error("예약가능합니다");
+
+			log.error("예약가능");
 			reservationMapper.insertReservation(reservationVO);
 			rdateVO.setAid(reservationVO.getAid());
 			rdateVO.setRid(reservationVO.getRid());
@@ -58,6 +58,10 @@ public class ReservationServiceImpl implements ReservationService {
 				reservationMapper.insertReservationDate(rdateVO);
 			}
 		}
+	}
+	@Override
+	public Long checkView(long mseq) {
+		return reservationMapper.checkView(mseq);
 	}
 
 }

@@ -39,7 +39,7 @@
 %>
 </head>
 <style>
-p {
+body, h3 {
    font-family: 'Poor Story', cursive !important;
 }
 </style>
@@ -130,9 +130,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's Name</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's name.</p>
+                        <h3 class="mb-0">숙소 이름</h3>
+                        <p class="card-text mb-auto">숙소 이름을 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="aname"
                         size="60" placeholder="Room's Name" style="margin-bottom: 11%;">
@@ -144,9 +143,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's Location</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's location.</p>
+                        <h3 class="mb-0">숙소 위치</h3>
+                        <p class="card-text mb-auto">숙소 위치를 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="aloc"
                         size="60" placeholder="Room's Location"
@@ -159,9 +157,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's Price</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's price.</p>
+                        <h3 class="mb-0">숙소 가격</h3>
+                        <p class="card-text mb-auto">숙소 가격을 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="number" name="aprice"
                         size="60" placeholder="Room's Price" style="margin-bottom: 11%;">
@@ -173,9 +170,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation Name</h3>
-                        <p class="card-text mb-auto">Please select your accomodation
-                           type.</p>
+                        <h3 class="mb-0">숙소 방 타입</h3>
+                        <p class="card-text mb-auto">숙소 방 타입을 선택해주세요.</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 81px !important; margin-top: 0px !important; margin-bottom: 11%;">
@@ -195,9 +191,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Maximum Capacity</h3>
-                        <p class="card-text mb-auto">Please select accomodation's
-                           maximum capacity.</p>
+                        <h3 class="mb-0">최대 수용 인원 수</h3>
+                        <p class="card-text mb-auto">숙소에 수용 가능한 최대 인원 수를 선택해주세요.</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 81px !important; margin-top: 0px !important; margin-bottom: 11%;">
@@ -219,25 +214,23 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's notice</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's notice.</p>
+                        <h3 class="mb-0">숙소 공지사항</h3>
+                        <p class="card-text mb-auto">숙소 공지사항을 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="anotice"
                         size="60" placeholder="Room's Name" style="margin-bottom: 11%;">
                   </div>
                </div>
-               <div class="col-md-6" style="width: 33%;">
+                <div class="col-md-6" style="width: 33%;">
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's ax</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's ax.</p>
+                        <h3 class="mb-0">숙소 주소</h3>
+                        <p class="card-text mb-auto">숙소 위치의 주소를 입력해주세요.</p>
                      </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ax"
+                     <input class="form-control me-2" type="text" name="amap"
                         size="60" placeholder="Room's Location"
                         style="margin-bottom: 11%;">
                   </div>
@@ -248,23 +241,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Accomodation's ay</h3>
-                        <p class="card-text mb-auto">Please write your
-                           accomodation's ay.</p>
-                     </div>
-                     <input class="form-control me-2" type="number" step="0.01" name="ay"
-                        size="60" placeholder="Room's Price" style="margin-bottom: 11%;">
-                  </div>
-               </div>
-               <div class="col-md-6" style="width: 33%;">
-                  <div
-                     class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                     <div class="col p-4 d-flex flex-column position-static">
-                        <span class="badge rounded-pill bg-secondary"
-                           style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">The number of Room</h3>
-                        <p class="card-text mb-auto">Please write the number of
-                           room.</p>
+                        <h3 class="mb-0">방 갯수</h3>
+                        <p class="card-text mb-auto">숙소의 방 갯수를 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="number" name="rnum"
                         size="60" placeholder="The number of Room"
@@ -277,8 +255,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Wi-Fi</h3>
-                        <p class="card-text mb-auto">Please select if there's Wi-Fi.</p>
+                        <h3 class="mb-0">와이파이</h3>
+                        <p class="card-text mb-auto">와이파이가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -295,9 +273,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">The number of Toilet</h3>
-                        <p class="card-text mb-auto">Please write the number of
-                           toilet.</p>
+                        <h3 class="mb-0">화장실 갯수</h3>
+                        <p class="card-text mb-auto">숙소의 화장실 갯수를 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="number" name="tnum"
                         size="60" placeholder="The number of Room"
@@ -310,8 +287,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">The number of Bed</h3>
-                        <p class="card-text mb-auto">Please write the number of bed.</p>
+                        <h3 class="mb-0">침대 갯수</h3>
+                        <p class="card-text mb-auto">숙소의 침대 갯수를 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="number" name="bnum"
                         size="60" placeholder="The number of Room"
@@ -324,8 +301,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">MicroWave</h3>
-                        <p class="card-text mb-auto">Is there a microwave?</p>
+                        <h3 class="mb-0">전자레인지</h3>
+                        <p class="card-text mb-auto">숙소 내에 전자레인지가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -342,8 +319,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Fridge</h3>
-                        <p class="card-text mb-auto">Is there a fridge?</p>
+                        <h3 class="mb-0">냉장고</h3>
+                        <p class="card-text mb-auto">숙소 내에 냉장고가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -360,8 +337,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Bidet</h3>
-                        <p class="card-text mb-auto">Is there a bidet?</p>
+                        <h3 class="mb-0">비데</h3>
+                        <p class="card-text mb-auto">숙소 내에 비데가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -379,7 +356,7 @@ p {
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
                         <h3 class="mb-0">TV</h3>
-                        <p class="card-text mb-auto">Is there a TV?</p>
+                        <p class="card-text mb-auto">숙소 내에 TV가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -396,9 +373,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Pet</h3>
-                        <p class="card-text mb-auto">Is it possible to bring the
-                           pets?</p>
+                        <h3 class="mb-0">반려동물</h3>
+                        <p class="card-text mb-auto">반려동물 동반 가능한가요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -415,8 +391,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Kitchen</h3>
-                        <p class="card-text mb-auto">Is there a kitchen?</p>
+                        <h3 class="mb-0">주방</h3>
+                        <p class="card-text mb-auto">주방이 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -433,8 +409,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Washing Machine</h3>
-                        <p class="card-text mb-auto">Is there a washing machine?</p>
+                        <h3 class="mb-0">세탁기</h3>
+                        <p class="card-text mb-auto">숙소 내에 세탁기가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -451,8 +427,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Parking</h3>
-                        <p class="card-text mb-auto">Is there a parking space?</p>
+                        <h3 class="mb-0">주차장</h3>
+                        <p class="card-text mb-auto">주차 공간이 있나여?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -469,8 +445,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Fire Alarm</h3>
-                        <p class="card-text mb-auto">Is there a fire alarm?</p>
+                        <h3 class="mb-0">화재경보기</h3>
+                        <p class="card-text mb-auto">숙소 내에 화재경보기가 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -487,8 +463,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Smoking</h3>
-                        <p class="card-text mb-auto">Is it possible to smoke inside?</p>
+                        <h3 class="mb-0">흡연</h3>
+                        <p class="card-text mb-auto">숙소 내에서 흡연이 가능한가요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -505,8 +481,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Roof Top</h3>
-                        <p class="card-text mb-auto">Is there a roof top?</p>
+                        <h3 class="mb-0">옥상</h3>
+                        <p class="card-text mb-auto">옥상 사용 가능한가요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -523,8 +499,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Barbecue</h3>
-                        <p class="card-text mb-auto">Is there a barbecue?</p>
+                        <h3 class="mb-0">바베큐</h3>
+                        <p class="card-text mb-auto">바베큐 서비스 있나요?</p>
                      </div>
                      <div id="personnelDiv"
                         style="width: 400px !important; height: 50px !important; margin-top: 9px !important; margin-bottom: 11%;">
@@ -541,9 +517,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Restaurant</h3>
-                        <p class="card-text mb-auto">Please recommend a good
-                           restaurant nearby.</p>
+                        <h3 class="mb-0">식당</h3>
+                        <p class="card-text mb-auto">숙소 주변 맛집 추천해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="ures"
                         size="60" placeholder="The number of Room"
@@ -556,9 +531,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Cafe</h3>
-                        <p class="card-text mb-auto">Please recommend a good cafe
-                           nearby.</p>
+                        <h3 class="mb-0">카페</h3>
+                        <p class="card-text mb-auto">숙소 주변 카페 추천해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="ucafe"
                         size="60" placeholder="The number of Room"
@@ -571,9 +545,8 @@ p {
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Convenience Store</h3>
-                        <p class="card-text mb-auto">Is there a convenience store
-                           nearby?</p>
+                        <h3 class="mb-0">편의점</h3>
+                        <p class="card-text mb-auto">숙소 주변 편의점을 적어주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="ucon"
                         size="60" placeholder="The number of Room"
@@ -595,24 +568,20 @@ p {
                         style="margin-bottom: 6%; height: 16%;"> 
                   </div>
                </div>
-               
                <div class="col-md-6" style="width: 33%;">
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                      <div class="col p-4 d-flex flex-column position-static">
                         <span class="badge rounded-pill bg-secondary"
                            style="width: 18%; margin-bottom: 2%;">YourStay</span>
-                        <h3 class="mb-0">Activity</h3>
-                        <p class="card-text mb-auto">Please recommend a good
-                           activity nearby.</p>
+                        <h3 class="mb-0">액티비티</h3>
+                        <p class="card-text mb-auto">숙소 주변에서 할 수 있는 액티비티를 입력해주세요.</p>
                      </div>
                      <input class="form-control me-2" type="text" name="uact"
                         size="60" placeholder="The number of Room"
                         style="margin-bottom: 11%;">
                   </div>
                </div>
-               </div>
-               
                <div class="col-md-6" style="width: 33%;">
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"
@@ -622,7 +591,7 @@ p {
                   Room Register
                   </button>
                   </div>
-                  </div>
+
                   </form>
                   <div
                      class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative"

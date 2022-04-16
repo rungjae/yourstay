@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
+	//reservation
 	private long rid;
 	private long aid;
 	private long mseq;
@@ -15,6 +16,7 @@ public class Reservation {
 	private String rend;
 	private int rpeople;
 	private int rprice;
+	private int checkView;
 	//accommodation
     private String aname;
     private String aloc;
@@ -22,7 +24,4 @@ public class Reservation {
     //member
     private String mname;
     private String memail;
-    //reservationdate
-    private String rdate;
-    
 }

@@ -29,7 +29,14 @@
 <link
    href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap"
    rel="stylesheet">
-
+   <!-- alert -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- Fontawesome -->
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+   integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script>
    $(document)
          .ready(
@@ -61,6 +68,14 @@
                                           + $("#personnel").val();
                                  }
                               });
+                  $("#locSubmitBtn")
+                  .click(
+                        function() {
+                              location.href = "../locInListFromMainGet.do?aloc="
+                                    + $("#locSubmitBtn").val();
+                        });
+                  
+                  
                   $("#datepicker1").datepicker({
                      dateFormat : 'yy-mm-dd'
                   });
@@ -81,6 +96,44 @@
                      window.location = "index.jsp";
                   });
                });
+   $(function(){
+       document.getElementById('my_btn').click();
+    });
+   function buttonCheck(check,loginCheck){
+	  
+       var mnum = loginCheck;
+       if(loginCheck !=null && check!=0){//checkNum이 널이면 로그인이 안되어있거나 메세지가없는것,0이면 알림을끝상태
+          const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: true,
+              showCancelButton: true,
+              confirmButtonText : "예약내용 보러가기",
+              cancelButtonText: '알림끄기',
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer);
+                toast.addEventListener('mouseleave', Swal.resumeTimer);
+              }
+            })
+            Toast.fire({
+              icon: 'success',
+              title: '새로운 예약이 있습니다'
+            }).then((result) => {
+                 if (result.isConfirmed) {//여기에 예약보러가는 로직
+                       //location.href="member/messageList?mnum="+mnum;
+
+                    } else if (
+                      /* Read more about handling dismissals below */
+                      result.dismiss === Swal.DismissReason.cancel
+                    ) {//여기에 로직 알림끄는 
+                    	//RESERVATION 테이블 checkview 1로 업데이트해주면 됨
+                    }    
+            })
+       }
+   }
+  
 </script>
 <!--// bootstrap-css -->
 <!-- css -->
@@ -106,23 +159,35 @@
 }
 </style>
 <body>
+<c:choose>
+	<c:when test="${check eq null }">
+		<c:set value="null" var="check"/>
+	</c:when>
+	<c:otherwise>
+		<c:set value="${check}" var="check"/>
+	</c:otherwise>
+</c:choose>
+<c:choose>
+	<c:when test="${loginOkUser eq null }">
+		<c:set value="null" var="loginOkUser"/>
+	</c:when>
+	<c:otherwise>
+		<c:set value="${loginOkUser.mseq}" var="loginOkUser"/>
+	</c:otherwise>
+</c:choose>
 
    <div class="container">
       <header class="blog-header py-3">
          <div
             class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
-               <a class="link-secondary" href="#">Subscribe</a>
             </div>
             <div class="col-4 text-center">
-               <a class="blog-header-logo text-dark" href="#">Large</a>
+               <a class="blog-header-logo text-dark" href="/">YourStay</a>
             </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-               <a class="link-secondary" href="#" aria-label="Search"> <svg
-                     xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                     fill="none" stroke="currentColor" stroke-linecap="round"
-                     stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                     viewBox="0 0 24 24">
+            <div class="col-4 d-flex justify-content-end align-items-center" style="padding-right: 10px; padding-top: 14px;">
+               <a class="link-secondary" href="notify.do" aria-label="Search"> 
+				<i class='fa fa-bell' style="margin-right: 30px;"></i>
                      <title>Search</title><circle cx="10.5" cy="10.5"
                         r="7.5" />
                      <path d="M21 21l-5.2-5.2" /></svg>
@@ -155,18 +220,6 @@
 
       <div class="nav-scroller py-1 mb-2">
          <nav class="nav d-flex justify-content-between">
-            <a class="p-2 link-secondary" href="#">World</a> <a
-               class="p-2 link-secondary" href="#">U.S.</a> <a
-               class="p-2 link-secondary" href="#">Technology</a> <a
-               class="p-2 link-secondary" href="#">Design</a> <a
-               class="p-2 link-secondary" href="#">Culture</a> <a
-               class="p-2 link-secondary" href="#">Business</a> <a
-               class="p-2 link-secondary" href="#">Politics</a> <a
-               class="p-2 link-secondary" href="#">Opinion</a> <a
-               class="p-2 link-secondary" href="#">Science</a> <a
-               class="p-2 link-secondary" href="#">Health</a> <a
-               class="p-2 link-secondary" href="#">Style</a> <a
-               class="p-2 link-secondary" href="#">Travel</a>
          </nav>
       </div>
    </div>
@@ -190,7 +243,6 @@
                         <div class="input-group-append" data-target="#datetimepicker1"
                            data-toggle="datetimepicker">
                            <div class="input-group-text">
-                              <i class="fa fa-calendar"></i>
                            </div>
                         </div>
                      </div>
@@ -205,7 +257,6 @@
                         <div class="input-group-append" data-target="#datetimepicker2"
                            data-toggle="datetimepicker">
                            <div class="input-group-text">
-                              <i class="fa fa-calendar"></i>
                            </div>
                         </div>
                      </div>
@@ -251,7 +302,7 @@
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <input id="locSubmitBtn" class="btn btn-primary" value="서울">
               </div>
          </div>
       </div>
@@ -351,7 +402,7 @@
                class="nav-link px-2 text-muted">Features</a></li>
             <li class="nav-item"><a href="#"
                class="nav-link px-2 text-muted">Pricing</a></li>
-            <li class="nav-item"><a href="#"
+            <li class="nav-item"><a href="/board/list"
                class="nav-link px-2 text-muted">FAQs</a></li>
             <li class="nav-item"><a href="#"
                class="nav-link px-2 text-muted">About</a></li>
@@ -359,5 +410,6 @@
          <p class="text-center text-muted">© 2021 Company, Inc</p>
       </footer>
    </div>
+   <input id="my_btn" type="button" onclick="buttonCheck(${check},${loginOkUser})"/>
 </body>
 </html>

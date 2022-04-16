@@ -11,16 +11,22 @@ import yourstay.md.domain.roomRegisterVO;
 
 public interface AccommodationService {
    /*
-    * ìˆ™ì†Œ í…Œì´ë¸”ì— ë“±ë¡
+    * ¼÷¼Ò Å×ÀÌºí¿¡ µî·Ï
     */
    public void insertAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception;
    /*
-    * ë“±ë¡í•˜ëŠ” íšŒì›ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
+    * ¼÷¼Ò Å×ÀÌºí ¼öÁ¤
     */
-   public MemberVO getRegisterMemberSeqS(long seq);
+   public void updateAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception;
+   
+   public void requestDelete(long aid);
+   
    /*
-    * ìˆ™ì†Œì´ë¯¸ì§€ ê°€ì ¸ì˜¤ê¸°
+    * ¼÷¼ÒÀÌ¹ÌÁö °¡Á®¿À±â
     */
    public List<Image> selectRoomImageS(long aid);
-   
+   /*
+    * µî·ÏÇÏ´Â È¸¿ø¹øÈ£ °¡Á®¿À±â
+    */
+   public MemberVO getRegisterMemberSeqS(long seq);
 }

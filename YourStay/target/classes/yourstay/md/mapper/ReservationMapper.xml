@@ -14,7 +14,7 @@
 		</selectKey>
 		insert
 		into reservation values
-		(#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice})
+		(#{rid},#{aid},#{mseq},#{rstart},#{rend},#{rpeople},#{rprice},0)
 	</insert>
 	<!-- 예약날짜테이블 등록 -->
 	<insert id="insertReservationDate"
@@ -29,6 +29,9 @@
 		select * from reservationdate where aid=#{aid} and rdate between
 		to_date(#{rstart},'yyyy-MM-dd')
 		and to_date(#{rend},'yyyy-MM-dd')
+	</select>
+	<select id="checkView" parameterType="long" resultType="Long">
+		select count(*) from RESERVATION where mseq=#{mseq} and checkview=0
 	</select>
 
 </mapper>

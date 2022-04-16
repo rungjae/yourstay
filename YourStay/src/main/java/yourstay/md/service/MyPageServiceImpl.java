@@ -21,19 +21,19 @@ public class MyPageServiceImpl implements MyPageService {
 	SqlSession session;
 
 	/*
-	 * íšŒì›ì˜ ì°œì •ë³´ë½‘ê¸°
+	 * È¸¿øÀÇ ÂòÁ¤º¸»Ì±â
 	 */
 	@Override
 	public List<WishListVO> getWishAidS(long mseq) {
-		return session.selectList("yourstay.md.mapper.getWishAid", mseq);
+		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishAid", mseq);
 	}
 
 	/*
-	 * íšŒì›ì´ ì°œí•œ ìˆ™ë°•ì—…ì²´ ë¦¬ìŠ¤íŠ¸
+	 * È¸¿øÀÌ ÂòÇÑ ¼÷¹Ú¾÷Ã¼ ¸®½ºÆ®
 	 */
 	@Override
 	public List<Accommodation> getWishListS(List<WishListVO> wishlist) {
-		return session.selectList("yourstay.md.mapper.getWishList", wishlist);
+		return session.selectList("yourstay.md.mapper.MyPageMapper.getWishList", wishlist);
 	}
 
 	@Override

@@ -10,57 +10,79 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import lombok.extern.log4j.Log4j;
-import lombok.extern.slf4j.Slf4j;
 import yourstay.md.domain.Accommodation;
 import yourstay.md.domain.Image;
 import yourstay.md.domain.MemberVO;
 import yourstay.md.domain.roomRegisterVO;
 import yourstay.md.fileset.RoomFileUtils;
 import yourstay.md.mapper.AccommodationMapper;
-
-@Slf4j
+@Log4j
 @Service
 public class AccommodationServiceImpl implements AccommodationService {
-	@Autowired
-	private AccommodationMapper accommodationMapper;
+   @Autowired
+   private AccommodationMapper accommodationMapper;
+   
+   @Resource(name="roomFileUtils")
+   private RoomFileUtils roomfileUtils;
+   
+   /*
+    * ¼÷¼Ò Å×ÀÌºí¿¡ µî·Ï
+    */
+   @Override
+   public void insertAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest) throws Exception {
+	   accommodationMapper.insertAccom(roomregisterVo);
+	   accommodationMapper.insertOption(roomregisterVo);
+	   accommodationMapper.insertUtil(roomregisterVo);
+      
+      List<Map<String,Object>> list = roomfileUtils.parseInsertFileInfo(roomregisterVo, mpRequest); 
+      log.info("list: "+list);
+      int size = list.size();
+      for(int i=0; i<size; i++){ 
+         accommodationMapper.insertFile(list.get(i)); 
+         log.info("list: "+list);
+      }
+      
+   }
+   
+   /*
+    * µî·ÏÇÏ´Â È¸¿ø¹øÈ£ °¡Á®¿À±â
+    */
+   @Override
+   public MemberVO getRegisterMemberSeqS(long mseq) {
+      return accommodationMapper.getRegisterMemberSeq(mseq);
+   }
 
-	@Resource(name = "roomFileUtils")
-	private RoomFileUtils roomfileUtils;
 
-	/*
-	 * ìˆ™ì†Œ í…Œì´ë¸”ì— ë“±ë¡
-	 */
-	@Override
-	public void insertAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest)
-			throws Exception {
-		log.info("insertAccommodationS ì„œë¹„ìŠ¤ ë‚´ ì‹¤í–‰");
-		accommodationMapper.insertAccom(roomregisterVo);
-		accommodationMapper.insertOption(roomregisterVo);
-		accommodationMapper.insertUtil(roomregisterVo);
 
-		List<Map<String, Object>> list = roomfileUtils.parseInsertFileInfo(roomregisterVo, mpRequest);
-		System.out.println("insertAccommodationS ì„œë¹„ìŠ¤ ë‚´  list: " + list);
-		log.error("list: " + list);
-		int size = list.size();
-		for (int i = 0; i < size; i++) {
-			accommodationMapper.insertFile(list.get(i));
-			log.error("list: " + list);
-		}
+@Override
+public void updateAccommodationS(roomRegisterVO roomregisterVo, MultipartHttpServletRequest mpRequest)
+		throws Exception {
+	System.out.println("#AccommodationServiceImpl roomregisterVo aid: "+roomregisterVo.getAid());
+	   accommodationMapper.updateAccom(roomregisterVo);
+	   accommodationMapper.updateOption(roomregisterVo);
+	   accommodationMapper.updateUtil(roomregisterVo);
+   
+   List<Map<String,Object>> list = roomfileUtils.parseInsertFileInfo(roomregisterVo, mpRequest); 
+   log.info("list: "+list);
+   int size = list.size();
+   for(int i=0; i<size; i++){ 
+      accommodationMapper.updateFile(list.get(i)); 
+      log.info("list: "+list);
+   }
+	
+}
 
-	}
-	/*
-	 * ë“±ë¡í•˜ëŠ” íšŒì›ë²ˆí˜¸ ê°€ì ¸ì˜¤ê¸°
-	 */
-	@Override
-	public MemberVO getRegisterMemberSeqS(long mseq) {
-		return accommodationMapper.getRegisterMemberSeq(mseq);
-	}
-	/*
-	 * ìˆ™ì†Œ ì´ë¯¸ì§€ ê°€ì ¸ì˜¤ê¸°
-	 */
-	@Override
-	public List<Image> selectRoomImageS(long aid) {
-		return accommodationMapper.selectRoomImage(aid);
-	}
+@Override
+public void requestDelete(long aid){
+    accommodationMapper.requestDelete(aid);
+}
+
+/*
+ * ¼÷¼Ò ÀÌ¹ÌÁö °¡Á®¿À±â
+ */
+@Override
+public List<Image> selectRoomImageS(long aid) {
+	return accommodationMapper.selectRoomImage(aid);
+}
 
 }

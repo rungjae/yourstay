@@ -16,8 +16,7 @@ public class roomRegisterVO {
 	   private String atype;
 	   private int apeople;
 	   private String anotice;
-	   private double ax;
-	   private double ay;
+	   private String amap;
 	   private int rnum;
 	   private int wifi;
 	   private int tnum;
@@ -41,5 +40,6 @@ public class roomRegisterVO {
 	   private long iid;
 	   private long apoint;
 	   private long mseq;
+	   private String org_file_name;
 
 }
