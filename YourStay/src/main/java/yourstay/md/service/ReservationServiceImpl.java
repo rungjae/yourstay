@@ -19,21 +19,21 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	ReservationMapper reservationMapper;
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾àÅ×ÀÌºí µî·Ï
 	 */
 	@Override
 	public void insertReservationS(Reservation reservationVO) {
 		reservationMapper.insertReservation(reservationVO);
 	}
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí µî·Ï
 	 */
 	@Override
 	public void insertReservationDateS(ReservationDateVO rdateVO) {
 		reservationMapper.insertReservationDate(rdateVO);
 	}
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½È¸
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí Á¶È¸
 	 */
 	@Override
 	public List<ReservationDateVO> selectReservationDateS(Reservation reservationVO) {
@@ -45,11 +45,10 @@ public class ReservationServiceImpl implements ReservationService {
 		ArrayList<String> selectDateList = (ArrayList<String>) DateMaker.getDateList(reservationVO.getRstart(), reservationVO.getRend());
 		ArrayList<ReservationDateVO> checkList = (ArrayList<ReservationDateVO>) reservationMapper.selectReservationDate(reservationVO);
 		ReservationDateVO rdateVO = new ReservationDateVO();
-		if(checkList.size() != 0) { //ê¸°ì¡´ ì˜ˆì•½ë‚ ì§œì™€ ì¤‘ë³µëœ ë‚ ì§œê°€ 1ê°œë¼ë„ìˆì„ì‹œì—
-			log.error("ì˜ˆì•½ë¶ˆê°€");
-		}else {
-
-			log.error("ì˜ˆì•½ê°€ëŠ¥");
+		if(checkList.size() != 0) { //»ç¿ëÀÚ ÀÔ·Â °ªÀÌ ¿¹¾àÅ×ÀÌºí¿¡ ÀÖÀ¸¸é
+			log.error("¿¹¾àºÒ°¡ÇÕ´Ï´Ù");
+		}else {//»ç¿ëÀÚ ÀÔ·Â °ªÀÌ ¿¹¾àÅ×ÀÌºí¿¡ ¾øÀ¸¸é
+			log.error("¿¹¾à°¡´ÉÇÕ´Ï´Ù");
 			reservationMapper.insertReservation(reservationVO);
 			rdateVO.setAid(reservationVO.getAid());
 			rdateVO.setRid(reservationVO.getRid());
@@ -59,9 +58,68 @@ public class ReservationServiceImpl implements ReservationService {
 			}
 		}
 	}
-	@Override
-	public Long checkView(long mseq) {
-		return reservationMapper.checkView(mseq);
-	}
 
+	@Override
+	   public List<ReservationDateVO> selectAidReservationDateS(long aid) {
+	      return reservationMapper.selectAidReservationDate(aid);
+	   }
+	/*
+     * È£½ºÆ® ¾Ë¶÷ Ã£±â 
+    */
+   @Override
+   public Long checkView(long mseq) {
+      return reservationMapper.checkView(mseq);
+   }
+   /*
+     * °Ô½ºÆ® ¾Ë¶÷ Ã£±â 
+    */
+   @Override
+   public Long checkView2(long mseq) {
+      return reservationMapper.checkView2(mseq);
+   }
+   /*
+     * rid·Î Reservation Ã£±â 
+     */
+   @Override
+   public int findReservationRidS(long rid) {
+      log.error("ReservationServiceImpl findRacceptS Á¢¼Ó");
+      log.error("rid: "+ rid);
+      return reservationMapper.findReservationRid(rid);
+   }
+   /*
+     * mseq·Î Reservation Ã£±â 
+     */
+   @Override
+   public List<Reservation> findReservationMseqS(long mseq) {
+      log.info("ReservationServiceImpl findRacceptS Á¢¼Ó");
+      return reservationMapper.findReservationMseq(mseq);
+   }
+   /*
+    *ÇØ´ç ¿¹¾à°Ç ¼ö¶ôÇØÁÖ´Â ±â´É ( Reservation UpdateRaccept )  
+    */
+   @Override
+   public int hostUpdateS(long rid) {
+      log.info("ReservationServiceImpl racceptUpdateS Á¢¼Ó");
+      int result = reservationMapper.hostUpdate(rid);
+      if(result>0) {
+         log.info("ReservationServiceImpl racceptUpdateS ¼º°ø!!");
+      }else {
+         log.info("ReservationServiceImpl racceptUpdateS ½ÇÆĞ!!!!");
+      }
+      return result;
+   }
+   /*
+    *ÇØ´ç ¿¹¾à°Ç ¼ö¶ôÇØÁÖ´Â ±â´É ( Reservation UpdateRaccept )  
+    */
+   @Override
+   public int guestUpdateS(Reservation reservation) {
+      log.info("ReservationServiceImpl racceptUpdateS Á¢¼Ó");
+      int result = reservationMapper.guestUpdate(reservation);
+      if(result>0) {
+         log.info("ReservationServiceImpl racceptUpdateS ¼º°ø!!");
+      }else {
+         log.info("ReservationServiceImpl racceptUpdateS ½ÇÆĞ!!!!");
+      }
+      return result;
+   }
 }

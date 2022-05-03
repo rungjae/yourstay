@@ -43,7 +43,7 @@
 %>
 </head>
 <style>
-p {
+p,div,h3,main {
    font-family: 'Poor Story', cursive !important;
 }
 </style>
@@ -612,7 +612,7 @@ p {
                      style="height: 100px;">
                      <button id="addRoomsBtn" type="submit" class="btn btn-secondary"
                         style="padding: 0.9999rem 0.75rem !important; font-weight: 999 !important; line-height: 1.7 !important; background-color: #2AC1BC !important; border-color: #2AC1BC !important;">
-                   	수정하기
+                      수정하기
                   </button>
                   </div>
                   </form>
@@ -628,14 +628,18 @@ p {
                   </main>
                </div>
                
-      <footer class="blog-footer">
-         <p>
-            Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
-            by <a href="https://twitter.com/mdo">@mdo</a>.
-         </p>
-         <p>
-            <a href="#">Back to top</a>
-         </p>
+      <footer class="py-3 my-4">
+         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/"
+               class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="/mypage/home"
+               class="nav-link px-2 text-muted">MyPage</a></li>
+            <li class="nav-item"><a href="/board/list"
+               class="nav-link px-2 text-muted">FAQs</a></li>
+            <li class="nav-item"><a href="/Projectreview"
+               class="nav-link px-2 text-muted">About</a></li>
+         </ul>
+         <p class="text-center text-muted">© 2021 Company, Inc</p>
       </footer>
 </body>
 </html>

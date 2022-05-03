@@ -7,16 +7,42 @@ import yourstay.md.domain.ReservationDateVO;
 
 public interface ReservationMapper {
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾àÅ×ÀÌºí µî·Ï
 	 */
 	public void insertReservation(Reservation reservationVO);
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí µî·Ï
 	 */
 	public void insertReservationDate(ReservationDateVO rdateVO);
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½È¸
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí Á¶È¸
 	 */
 	public List<ReservationDateVO> selectReservationDate(Reservation reservationVO);
-	public Long checkView(long mseq);
+	
+	public List<ReservationDateVO> selectAidReservationDate(long aid);
+	/*
+     * È£½ºÆ®¿ë ¾Ë¸²±â´É checkView Ã£±â 
+    */
+   public Long checkView(long mseq);
+   /*
+     * °Ô½ºÆ®¿ë ¾Ë¸²±â´É checkView Ã£±â
+    */
+   public Long checkView2(long mseq);
+   
+   /*
+     * rid·Î Reservation Ã£±â 
+    */
+    public int findReservationRid(long rid);
+    /*
+     * mseq·Î Reservation Ã£±â 
+    */
+    public List<Reservation> findReservationMseq(long mseq);
+    /*
+     * È£½ºÆ® ¾Ë¸² ¾÷µ¥ÀÌÆ® ÇÏ±â ( Reservation UpdateRaccept )  
+    */
+    public int hostUpdate(long rid);
+    /*
+     * °Ô½ºÆ® ¾Ë¸² ¾÷µ¥ÀÌÆ® ÇÏ±â ( Reservation UpdateRaccept )  
+    */
+    public int guestUpdate(Reservation reservation);
 }

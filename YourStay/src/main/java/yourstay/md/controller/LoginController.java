@@ -1,11 +1,5 @@
 package yourstay.md.controller;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +25,24 @@ import static yourstay.md.domain.LoginConst.*;
 @AllArgsConstructor
 @Controller
 @RequestMapping("/login")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : LoginController
+ * author : kosmo 3팀
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3팀             최초 생성
+ */
+
 public class LoginController {
-	
 	@Autowired
 	MemberMapper mapper;
-	
 	@Autowired
 	SearchMapper searchMapper;
-	
 	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){
@@ -46,31 +50,6 @@ public class LoginController {
         mv.setViewName("login/loginPage");
         return mv;
     }
-
-	@PostMapping("loginCheck.do")
-	private ModelAndView check(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException, IOException {
-//		log.info("loginCon check aid:" + aid + ", startDate : " + rstart + ", endDate : " + rend);
-		String memail = request.getParameter("memail");
-		String mpwd = request.getParameter("mpwd");
-		ModelAndView mv = new ModelAndView();
-		//유효성 검사(클라이언트측 View:js, 서버측 Controller:java)
-		log.info("loginCon check //email: "+memail+", pwd: "+mpwd);
-		int result = mapper.login(memail, mpwd);
-		log.info("로그인 결과(3>성공) : " + result);		
-		
-		if(result == YES_ID_PWD) { //로그인 성공시
-			log.info("로그인 성공");	
-			MemberVO m = mapper.getUser(memail);
-			session = request.getSession();
-			mv.addObject("msg", "success");
-			session.setAttribute("memail", m.getMemail());
-			session.setAttribute("mseq", m.getMseq());
-			session.setAttribute("loginOkUser", m);
-			log.info("m: "+m);
-		}
-		mv = new ModelAndView("msg", "result", result);
-		return mv;
-	}
 	
 	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -86,26 +65,5 @@ public class LoginController {
         mv.setViewName("login/joinPage");
         return mv;
     }
-	@PostMapping("join.do")
-	public ModelAndView join(@RequestParam String mname, String memail, String mpwd, int mcallnum) {
-   
-	   MemberVO memberVo = mapper.getUser(memail);
-	   ModelAndView mav = new ModelAndView();
-	   if(memberVo == null)
-	   {
-	    mapper.addUser(new MemberVO(-1, mname, memail, mpwd , mcallnum, -1));
-		   mav.setViewName("login/loginPage");
-	      mav.addObject("msg","success");
-	      log.info("ddd");
-	      return mav;
-      }
-      else
-      {
-         mav.setViewName("login/joinPage");
-         mav.addObject("msg","fail");
-         log.info("cccc");
-         return mav;
-      }
-   }
 
 }

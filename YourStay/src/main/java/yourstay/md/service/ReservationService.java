@@ -7,18 +7,42 @@ import yourstay.md.domain.ReservationDateVO;
 
 public interface ReservationService {
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾àÅ×ÀÌºí µî·Ï
 	 */
 	public void insertReservationS(Reservation reservationVO);
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí µî·Ï
 	 */
 	public void insertReservationDateS(ReservationDateVO rdateVO);
 	/*
-	 * ï¿½ï¿½ï¿½à³¯Â¥ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½È¸
+	 * ¿¹¾à³¯Â¥Å×ÀÌºí Á¶È¸
 	 */
 	public List<ReservationDateVO> selectReservationDateS(Reservation reservationVO);
 	
 	public void ReservationDateS(Reservation reservationVO);
-	public Long checkView(long mseq);
+	public List<ReservationDateVO> selectAidReservationDateS(long aid);
+	/*
+     * È£½ºÆ® ¾Ë¶÷ Ã£±â 
+    */
+   public Long checkView(long mseq);
+   /*
+     * °Ô½ºÆ® ¾Ë¶÷ Ã£±â 
+    */
+   public Long checkView2(long mseq);
+    /*
+     * rid·Î Reservation Ã£±â 
+    */
+    public int findReservationRidS(long rid);
+    /*
+     * mseq·Î Reservation Ã£±â 
+    */
+    public List<Reservation> findReservationMseqS(long mseq);
+    /*
+     * ÇØ´ç ¿¹¾à°Ç ¼ö¶ôÇØÁÖ´Â ±â´É ( Reservation UpdateRaccept )  
+    */
+    public int hostUpdateS(long rid);
+    /*
+     * ÇØ´ç ¿¹¾à°Ç ¼ö¶ôÇØÁÖ´Â ±â´É ( Reservation UpdateRaccept )  
+    */
+    public int guestUpdateS(Reservation reservation);
 }

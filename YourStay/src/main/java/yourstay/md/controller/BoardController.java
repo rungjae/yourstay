@@ -19,6 +19,19 @@ import yourstay.md.service.BoardService;
 @AllArgsConstructor
 @Controller
 @RequestMapping("board")
+
+/**
+ * packageName : yourstay.md.controller
+ * fileName : BoardController
+ * author : kosmo 3得
+ * date : Mar 14, 2022
+ * description :
+ * ===========================================================
+ * DATE                  AUTHOR                  NOTE
+ * -----------------------------------------------------------
+ * Mar 14, 2022          kosmo 3得             置段 持失
+ */
+
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
@@ -79,10 +92,23 @@ public class BoardController {
 	         return mv;
 	      }
 	   }
-	@GetMapping("content.do")
-	   public ModelAndView content(long boardnum) {
-	      Board board = boardService.getBoard(boardnum);
-	      ModelAndView mv = new ModelAndView("board/content", "board", board);
+	@GetMapping("content")
+   public ModelAndView content(long boardnum) {
+      Board board = boardService.getBoard(boardnum);
+      ModelAndView mv = new ModelAndView("board/content", "board", board);
+      
+      return mv;
+   }
+	@GetMapping("write")
+   public ModelAndView write() {
+      ModelAndView mv = new ModelAndView("board/write");
+      
+      return mv;
+   }
+	@GetMapping("modify")
+	   public ModelAndView modify(long boardnum) {
+		  Board board = boardService.getBoard(boardnum);
+	      ModelAndView mv = new ModelAndView("board/modify", "board", board);
 	      
 	      return mv;
 	   }
