@@ -18,9 +18,9 @@ import yourstay.md.domain.reviewVO;
 
 @Component("fileUtils")
 public class FileUtils {
-	public static final String FILE_STORE="C:/heejin/Final/Git/YourStay/src/main/webapp/resources/images/reviewImg/";
+	public static final String FILE_STORE="C:/git/YourStay/src/main/webapp/resources/images/reviewImg/";
 	
-	//ÀÛ¼ºÀÚº°·Î Æú´õ »ý¼º ÇÏ±â À§ÇÑ ¸Þ¼Òµå
+	//ï¿½Û¼ï¿½ï¿½Úºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	public static String writerPath(reviewVO reviewVO) { 
 		final String FILE_FINAL_PATH = FILE_STORE+reviewVO.getRenum()+"/";
 		return FILE_FINAL_PATH;
@@ -67,7 +67,7 @@ public class FileUtils {
 		return list;
 	}
 	
-	public static String getRandomString() {//32±ÛÀÚÀÇ ·£´ýÇÑ ¹®ÀÚ¿­(¼ýÀÚÆ÷ÇÔ)À» ¸¸µé¾î¼­ ¹ÝÈ¯ÇØÁÖ´Â ±â´É
+	public static String getRandomString() {//32ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½È¯ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
 }

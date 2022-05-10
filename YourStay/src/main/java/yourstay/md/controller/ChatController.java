@@ -13,18 +13,19 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 /**
  * packageName : yourstay.md.controller
  * fileName : ChatController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ı¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
+
 
 public class ChatController {
 
-    @MessageMapping("/chat.sendMessage") // /{aid}¹Ş¾Æ¿À±â
+    @MessageMapping("/chat.sendMessage") // /{aid}ï¿½Ş¾Æ¿ï¿½ï¿½ï¿½
     @SendTo("/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         return chatMessage;
@@ -34,7 +35,7 @@ public class ChatController {
     @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor){
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
-        // model¿¡¼­ ¹æ¹øÈ£ »ı¼ºÇØ¼­ ³Ñ°ÜÁÖ±â
+        // modelï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ñ°ï¿½ï¿½Ö±ï¿½
         return chatMessage;
     }
 }

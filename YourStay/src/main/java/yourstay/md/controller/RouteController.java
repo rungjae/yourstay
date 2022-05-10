@@ -34,13 +34,13 @@ import yourstay.md.service.SearchService;
 /**
  * packageName : yourstay.md.controller
  * fileName : RouteController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ı¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class RouteController {
@@ -76,7 +76,7 @@ public class RouteController {
 		int p = Integer.parseInt(person);
 		List<Accommodation> acvo = searchService.getAccommodationListBySearchBar(aloc, startdate, deadline, p);
 		log.info("List<Accommodation> acvo size : "+ acvo.size());
-		for(Accommodation ac:acvo) {//¼÷¼Ò¸®½ºÆ® ÀÌ¹ÌÁö	
+		for(Accommodation ac:acvo) {	
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
 			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
 			log.info("searchGetFromMain ///roomImage: " + roomImage);
@@ -102,14 +102,13 @@ public class RouteController {
 	public ModelAndView searchByLocation(String aloc) {
 		List<Accommodation> acvo = searchService.getAccommodationListByLocation(aloc);
 		log.info("List<Accommodation> acvo size : "+ acvo.size());
-		for(Accommodation ac:acvo) {//¼÷¼Ò¸®½ºÆ® ÀÌ¹ÌÁö	
+		for(Accommodation ac:acvo) {
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
 			log.info("searchGetFromMain ///acvo.get("+ac+").getAid(): " + ac.getAid());
 			log.info("searchGetFromMain ///roomImage: " + roomImage);
 			log.info("searchGetFromMain ///roomImage.get(0).getStored_file_name() : " + roomImage.get(0).getStored_file_name());
 			ac.setIpath1(roomImage.get(0).getStored_file_name());
 		}	
-//		log.info("acvo 3¹øÂ° : "+acvo.get(3).getIpath1());
 		log.info(acvo.toString());
 		ModelAndView mv = new ModelAndView("searchList", "acvo", acvo);
 		mv.setViewName("searchList");
@@ -123,12 +122,10 @@ public class RouteController {
 			@RequestParam String rend,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		log.info("RouteCon searchDetail ////  aid : " + aid + ", startDate : " + rstart + ", endDate : " + rend);
-		List<Image> roomImage = accommodationService.selectRoomImageS(aid); //¼÷¼ÒÀÌ¹ÌÁö
+		List<Image> roomImage = accommodationService.selectRoomImageS(aid);
 		String ipath1 = roomImage.get(0).getStored_file_name();
 		String ipath2 = roomImage.get(1).getStored_file_name();
 		String ipath3 = roomImage.get(2).getStored_file_name();
-//	    MemberVO mvo =(MemberVO)session.getAttribute("loginOkUser");
-//	    long mseq = mvo.getMseq();
 		List<resultVO> reslist = searchService.getAccommodationByAccommodationId(aid);
 		List<reviewVO>  reviewlist = searchService.getReviewByAccommodationId(aid);
 		List<ReservationDateVO> rdatelist = reservationService.selectAidReservationDateS(aid);
@@ -143,21 +140,21 @@ public class RouteController {
 		log.info("RouteCon searchDetail reviewpoint : "+ reviewpoint);
 		resultVO resVO = reslist.get(0);
 		log.info("RouteCon searchDetail resVO : "+ resVO);
-		long diffDays = priceService.daysCalc(rstart, rend);// ¼÷¹ÚÀÏ¼ö °è»ê
-		long resultprice = priceService.resultPrice(resVO, diffDays);//¼÷¹ÚÀÏ¼ö¿¡ µû¸¥ ÃÖÁ¾ ±İ¾× °è»ê
+		long diffDays = priceService.daysCalc(rstart, rend);
+		long resultprice = priceService.resultPrice(resVO, diffDays);
 		resVO.setIpath1(ipath1);
 		resVO.setIpath2(ipath2);
 		resVO.setIpath3(ipath3);
-		resVO.setResultprice(resultprice);//ÃÖÁ¾±İ¾×°è»ê Àû¿ë
-		resVO.setRstart(rstart);// »ç¿ëÀÚ¼±ÅÃ ½ÃÀÛ³¯Â¥ Àû¿ë
-		resVO.setRend(rend);// »ç¿ëÀÚ¼±ÅÃ ³¡³¯Â¥ Àû¿ë
-		resVO.setDays(diffDays);// »ç¿ëÀÚ¼±ÅÃ ¼÷¹ÚÀÏ¼ö Àû¿ë
+		resVO.setResultprice(resultprice);
+		resVO.setRstart(rstart);
+		resVO.setRend(rend);
+		resVO.setDays(diffDays);
 		resVO.setAid(aid);
 		mv.addObject("datelist", rdatelist);
-		mv.addObject("reservation",reservation);//¹æ¹®ÀÚ ¼ö ±¸ÇÏ±â
-		mv.addObject("reviewpoint",reviewpoint);//Æò±Õ ¸®ºä ±¸ÇÏ±â
-		mv.addObject("reslist", reviewlist);//¸®ºä¸®½ºÆ® Àü´Ş
-		mv.addObject("resVO", resVO);//¼÷¼ÒÁ¤º¸ Àü´Ş
+		mv.addObject("reservation",reservation);
+		mv.addObject("reviewpoint",reviewpoint);
+		mv.addObject("reslist", reviewlist);
+		mv.addObject("resVO", resVO);
 		mv.setViewName("info/info");
 		log.info("searchDetail resVO.getAid() : " + resVO.getAid());
 		log.info("searchDetail resultVO: " + resVO.toString());

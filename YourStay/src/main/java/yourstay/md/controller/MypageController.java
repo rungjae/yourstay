@@ -46,13 +46,13 @@ import yourstay.md.service.RoomHistoryService;
 /**
  * packageName : yourstay.md.controller
  * fileName : MypageController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ý¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class MypageController {
@@ -78,7 +78,7 @@ public class MypageController {
 	
 	@GetMapping(value="/home")
     public ModelAndView gohome(HttpSession session){
-        log.info("MypageController -> gohome ¿äÃ»");
+        log.info("MypageController -> gohome ï¿½ï¿½Ã»");
         MemberVO vo = memberMapper.getUser((String)session.getAttribute("memail"));
         ModelAndView mv = new ModelAndView("mypage/home","member",vo);
         return mv;
@@ -129,7 +129,7 @@ public class MypageController {
         
         log.info("####vo:"+vo);
         resultVO resultVO = vo.get(0);
-        resultVO.setAid(aid); //À¯Àú°¡ ¼±ÅÃÇÑ ¼÷¼Ò¹øÈ£ ÀÔ·Â
+        resultVO.setAid(aid); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò¹ï¿½È£ ï¿½Ô·ï¿½
         ModelAndView mv = new ModelAndView("mypage/review","member",resultVO);
         mv.addObject("vo",vo);
         
@@ -138,7 +138,7 @@ public class MypageController {
    
    @GetMapping(value="/roomReservation")
    public ModelAndView roomReservation(long mseq,ModelAndView mv){
-       log.info("MypageController -> roomReservation ¿äÃ»");
+       log.info("MypageController -> roomReservation ï¿½ï¿½Ã»");
        List<Reservation> vo = roomService.getRoomList(mseq);
        log.info("MypageController -> roomReservation vo:"+ vo);
        for(Reservation ac: vo) {
@@ -196,7 +196,7 @@ public class MypageController {
    }
    @GetMapping("updateUser")
 	public ModelAndView findMember(ModelAndView mv, String memail) {
-		log.info("updateUser -> updateUser ÆäÀÌÁö ÀÌµ¿ ");
+		log.info("updateUser -> updateUser ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ");
 		log.info("memail: "+ memail);
 		MemberVO findMember = memberService.getUser(memail);
 		log.info("mcallnum : " + findMember.getMcallnum());
@@ -213,7 +213,7 @@ public class MypageController {
 	}
    @GetMapping(value="/goReservationList")
    public ModelAndView goReservationList(long mseq, ModelAndView mv){
-       log.info("MypageController -> goReservationList ¿äÃ»");
+       log.info("MypageController -> goReservationList ï¿½ï¿½Ã»");
        List<Reservation> vo = roomService.goReservationList(mseq);
        for(Reservation ac: vo) {
 			List<Image>roomImage = accommodationService.selectRoomImageS(ac.getAid());
@@ -231,13 +231,13 @@ public class MypageController {
        return mv;
    }
    /**
-    * È£½ºÆ®ÀÇ ¼÷¼Ò¸¦ ¿¹¾àÇÑ °Ô½ºÆ® º¸±â
+    * í˜¸ìŠ¤íŠ¸ì˜ ìˆ™ì†Œë¥¼ ì˜ˆì•½í•œ ê²ŒìŠ¤íŠ¸ ë³´ê¸°
     * @param long rid
     * @return ModelAndView
     */
    @GetMapping("/findReservation")
    public ModelAndView findReservationRaccept(ModelAndView mv, long rid) {
-      log.info("[ReservationRestController -> findReservationRaccept ¼÷¼Ò ¿¹¾àÇÑ °Ô½ºÆ® È®ÀÎ ¿äÃ»ÇÔ]");
+      log.info("[ReservationRestController -> findReservationRaccept ìˆ™ì†Œ ì˜ˆì•½í•œ ê²ŒìŠ¤íŠ¸ í™•ì¸ ìš”ì²­í•¨]");
       mv = new ModelAndView("/mypage/goReservationRoom", "FindReservation", reservservice.findReservationRidS(rid));
       return mv;
    }
@@ -245,7 +245,7 @@ public class MypageController {
    @GetMapping(value="/accessPage")
    public ModelAndView accessPage(long rid, ModelAndView mv){
 	   log.info("MypageController -> accessPage rid: "+rid);
-       log.info("MypageController -> accessPage ¿äÃ»");
+       log.info("MypageController -> accessPage ï¿½ï¿½Ã»");
        List<Reservation> vo = roomService.goReservationRoom(rid);
        int raccept = reservservice.findReservationRidS(rid);
        log.info("MypageController -> accessPage :"+vo);

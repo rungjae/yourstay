@@ -17,13 +17,13 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 /**
  * packageName : yourstay.md.controller
  * fileName : WebSocketEventListener
- * author : kosmo 3ÆÀ
+ * author : kosmo 3Ã†Ã€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ý¼º
+ * Mar 14, 2022          kosmo 3Ã†Ã€             ÃƒÃ–ÃƒÃŠ Â»Ã½Â¼Âº
  */
 
 public class WebSocketEventListener {

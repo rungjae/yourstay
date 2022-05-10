@@ -27,13 +27,13 @@ import yourstay.md.service.MyPageService;
 /**
  * packageName : yourstay.md.controller
  * fileName : MypageRestController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ı¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class MypageRestController {
@@ -45,14 +45,14 @@ public class MypageRestController {
 	private MemberService memberService;
 	
 	/**
-     * ¼÷¼Ò µî·Ï  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ìˆ™ì†Œ ë“±ë¡  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param roomRegisterVO roomregisterVo
      * @return ModelAndView
      */
 	@PostMapping(value = "/register.do")
     public ModelAndView roomRegister(ModelAndView mv, roomRegisterVO roomregisterVo,
           MultipartHttpServletRequest mpRequest) throws Exception {
-	   log.info("[MypageRestController -> roomRegister ¼÷¼Ò µî·Ï ¿äÃ»ÇÔ]");
+	   log.info("[MypageRestController -> roomRegister ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½]");
        log.info("mpRequest : " +  mpRequest);
        accommodationService.insertAccommodationS(roomregisterVo, mpRequest);
        mv.setViewName("redirect:/mypage/home");
@@ -60,14 +60,14 @@ public class MypageRestController {
     }
 	
 	/**
-     * ¼÷¼Ò Á¤º¸ ¼öÁ¤  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ìˆ™ì†Œ ì •ë³´ ìˆ˜ì •  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param roomregisterVo roomregisterVo
      * @return ModelAndView
      */
 	@PostMapping(value = "/modifyRoom")
     public ModelAndView modifyRoom(ModelAndView mv, roomRegisterVO roomregisterVo,
       MultipartHttpServletRequest mpRequest) throws Exception {
-	  log.info("[MypageRestController -> roomRegister ¼÷¼Ò ¼öÁ¤ ¿äÃ»ÇÔ]");
+		log.info("[MypageRestController -> roomRegister ìˆ™ì†Œ ìˆ˜ì • ìš”ì²­í•¨]");
       accommodationService.updateAccommodationS(roomregisterVo, mpRequest);
       log.info("roomregisterVo: " + roomregisterVo);
       mv.setViewName("redirect:/mypage/home");
@@ -75,13 +75,13 @@ public class MypageRestController {
    }
 	
 	/**
-     * ¼÷¼Ò »èÁ¦  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ìˆ™ì†Œ ì‚­ì œ  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param Board Board
      * @return ModelAndView
      */
     @PostMapping(value = "/delete")
     public ModelAndView requestDelete(ModelAndView mv, Long aid){
-    	log.info("[MypageRestController -> requestDelete ¼÷¼Ò »èÁ¦ ¿äÃ»ÇÔ]");
+    	log.info("[MypageRestController -> requestDelete ìˆ™ì†Œ ì‚­ì œ ìš”ì²­í•¨]");
     	log.info("[MypageRestController -> aid]: "+aid);
         accommodationService.requestDelete(aid);
         mv.setViewName("redirect:/mypage/home");
@@ -89,61 +89,61 @@ public class MypageRestController {
     }
     
     /**
-     * È¸¿ø Á¤º¸ ¼öÁ¤  ( mname, memail, mpwd, mcallnum ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * íšŒì› ì •ë³´ ìˆ˜ì •  ( mname, memail, mpwd, mcallnum ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @return ModelAndView
      */
     @PostMapping("updateUser.do")
 	public ModelAndView updateMember(ModelAndView mv, long mseq, String mname, String memail, String mpwd, int mcallnum) {
-    	log.info("[MypageRestController -> updateMember È¸¿ø Á¤º¸ ¼öÁ¤ ¿äÃ»ÇÔ]");
+    	log.info("[MypageRestController -> updateMember íšŒì› ì •ë³´ ìˆ˜ì • ìš”ì²­í•¨]");
         MemberVO member = new MemberVO(mseq, mname, memail, mpwd, mcallnum, 0);
 		log.info("####memberVO : " + member);
 		int updateResult = memberService.updateUser(member);
 		if(updateResult>0) {
-			log.info("Member Update ¼º°ø");
+			log.info("Member Update ï¿½ï¿½ï¿½ï¿½");
 		}else {
-			log.info("Member Update ½ÇÆĞ");
+			log.info("Member Update ï¿½ï¿½ï¿½ï¿½");
 		}
 		mv.setViewName("redirect:/mypage/home");
 		return mv;
 	}
     
     /**
-     * È¸¿ø Å»Åğ  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * íšŒì› íƒˆí‡´  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param memail
      * @return ModelAndView
      */
     @PostMapping("removeUser.do")
 	public ModelAndView removeUser(ModelAndView mv, String memail, HttpSession session) {
-    	log.info("[MypageRestController -> removeUser È¸¿ø Å»Åğ ¿äÃ»ÇÔ]");
+    	log.info("[MypageRestController -> removeUser íšŒì› íƒˆí‡´ ìš”ì²­í•¨]");
 		int result = memberService.removeUser(memail);
 		if(result>0) {
-			log.info("## Controller removeUser ¼º°ø!!");
+			log.info("## Controller removeUser ì„±ê³µ!!");
 			session.invalidate();
 		}else {
-			log.info("## Controller removeUser ½ÇÆĞ!!");
+			log.info("## Controller removeUser ì‹¤íŒ¨!!");
 		}
 		mv.setViewName("redirect: /");
 		return mv;
 	}
 
     /**
-     * Âò ¸ñ·Ï Ãß°¡  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ì°œ ëª©ë¡ ì¶”ê°€  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param WishListVO wishlistvo
      * @return String
      */
 	@ResponseBody
 	@PostMapping(value="/wishlist/addwish")
 	public String addWishList(HttpSession session, WishListVO wishlistvo) {
-	   log.info("[MypageRestController -> addWishList Âò ¸ñ·Ï Ãß°¡ ¿äÃ»ÇÔ]");
+		log.info("[MypageRestController -> addWishList ì°œ ëª©ë¡ ì¶”ê°€ ìš”ì²­í•¨]");
        log.info("####wishlistvo : " + wishlistvo);
        boolean findResult = myPageService.findWishListS(wishlistvo);
        if(findResult) {
     	   myPageService.deleteWishListS(wishlistvo);
-    	   log.info("## MypageController deleteWishList »èÁ¦ ¼º°ø");
+    	   log.info("## MypageController deleteWishList ì‚­ì œ ì„±ê³µ");
     	   return "deleteWishList";
        }else {
     	   myPageService.addWishListS(wishlistvo);
-           log.info("## MypageController wishlist µî·Ï ¼º°ø");
+    	   log.info("## MypageController wishlist ë“±ë¡ ì„±ê³µ");
            return "addWishListS";
        }
     }

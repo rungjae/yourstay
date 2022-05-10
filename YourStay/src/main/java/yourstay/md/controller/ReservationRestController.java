@@ -23,15 +23,11 @@ import yourstay.md.service.ReservationService;
 @Log4j
 
 /**
- * packageName : yourstay.md.controller
- * fileName : ReservationRestController
- * author : kosmo 3ÆÀ
- * date : Mar 14, 2022
- * description :
- * ===========================================================
- * DATE                  AUTHOR                  NOTE
- * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ı¼º
+ * packageName : yourstay.md.controller fileName : ReservationRestController
+ * author : kosmo 3íŒ€ date : Mar 14, 2022 description :
+ * =========================================================== DATE AUTHOR NOTE
+ * ----------------------------------------------------------- Mar 14, 2022
+ * kosmo 3íŒ€ ìµœì´ˆ ìƒì„±
  */
 
 public class ReservationRestController {
@@ -41,73 +37,77 @@ public class ReservationRestController {
 	AccommodationService accommodationService;
 	@Autowired
 	ReservationService reservservice;
-	
+
 	/**
-     * ¿¹¾à Å×ÀÌºí Á¤º¸ È®ÀÎ ÈÄ ¿¹¾à ¿Ï·á/¹İ·Á Ã³¸®  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
-     * @param Reservation reservationVO
-     * @return ModelAndView
-     */
+	 * ì˜ˆì•½ í…Œì´ë¸” ì •ë³´ í™•ì¸ í›„ ì˜ˆì•½ ì™„ë£Œ/ë°˜ë ¤ ì²˜ë¦¬ ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
+	 * 
+	 * @param Reservation reservationVO
+	 * @return ModelAndView
+	 */
 	@PostMapping("/reservation.do")
 	public String checkReservation(Reservation reservationVO) {
-		log.info("[ReservationRestController -> checkReservation ¿¹¾à Å×ÀÌºí È®ÀÎ ¿äÃ»ÇÔ]");
+		log.info("[ReservationRestController -> checkReservation ì˜ˆì•½ í…Œì´ë¸” í™•ì¸ ìš”ì²­í•¨]");
 		log.info("ReservationController // checkReservation reservationVO :" + reservationVO);
 		reservservice.ReservationDateS(reservationVO);
 		return "redirect:/";
 	}
-	
+
 	/**
-     * ¿¹¾à ¿äÃ» ¼¼ºÎ Á¤º¸ È®ÀÎ Ã³¸®  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
-     * @param rstart, rend, resultprice, days
-     * @return ModelAndView
-     */
+	 * ì˜ˆì•½ ìš”ì²­ ì„¸ë¶€ ì •ë³´ í™•ì¸ ì²˜ë¦¬ ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
+	 * 
+	 * @param rstart, rend, resultprice, days
+	 * @return ModelAndView
+	 */
 	@PostMapping("/reservdetail")
-	public ModelAndView reserdetailPage(@RequestParam Integer aid, @RequestParam String rstart, @RequestParam String rend, @RequestParam long resultprice, @RequestParam long days) {
-		log.info("[ReservationRestController -> reserdetailPage ¿¹¾à ¿äÃ» ¼¼ºÎ Á¤º¸ È®ÀÎ ¿äÃ»ÇÔ]");
-		log.info("ReservationCon reserdetailPage //// Integer aid : "  + aid+ ", startDate : "+ rstart+", endDate : "+ rend);
-		List<Image> roomImage = accommodationService.selectRoomImageS(aid); //¼÷¼ÒÀÌ¹ÌÁö
-		String ipath1 = roomImage.get(0).getStored_file_name(); 
+	public ModelAndView reserdetailPage(@RequestParam Integer aid, @RequestParam String rstart,
+			@RequestParam String rend, @RequestParam long resultprice, @RequestParam long days) {
+		log.info("[ReservationRestController -> reserdetailPage ì˜ˆì•½ ìš”ì²­ ì„¸ë¶€ ì •ë³´ í™•ì¸ ìš”ì²­í•¨]");
+		log.info("ReservationCon reserdetailPage //// Integer aid : " + aid + ", startDate : " + rstart + ", endDate : "
+				+ rend);
+		List<Image> roomImage = accommodationService.selectRoomImageS(aid); // ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½
+		String ipath1 = roomImage.get(0).getStored_file_name();
 		List<resultVO> rlist = searchMapper.getAccommodationByAccommodationId(aid);
 		resultVO rVO = rlist.get(0);
 		rVO.setIpath1(ipath1);
-		rVO.setRstart(rstart);//»ç¿ëÀÚ¼±ÅÃ ½ÃÀÛ³¯Â¥ Àû¿ë
-		rVO.setRend(rend);//»ç¿ëÀÚ¼±ÅÃ ³¡³¯Â¥ Àû¿ë
-		rVO.setDays(days);//¼÷¹ÚÀÏ¼ö Àû¿ë
-		rVO.setResultprice(resultprice); //ÃÖÁ¾ ±İ¾× Àû¿ë
+		rVO.setRstart(rstart);// ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û³ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½
+		rVO.setRend(rend);// ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¥ ï¿½ï¿½ï¿½ï¿½
+		rVO.setDays(days);// ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ ï¿½ï¿½ï¿½ï¿½
+		rVO.setResultprice(resultprice); // ï¿½ï¿½ï¿½ï¿½ ï¿½İ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 		rVO.setAid(aid);
-		
-		
+
 		log.info("reserdetailPage resultVO: " + rVO.toString());
-		return new ModelAndView("/reserdetail/reservation","rdetail",rVO);
+		return new ModelAndView("/reserdetail/reservation", "rdetail", rVO);
 	}
-	
+
 	/**
-     * È£½ºÆ® ¿¹¾à ¼ö¶ô Ã³¸®
-     * @param long rid
-     * @return ModelAndView
-     */
-    @PostMapping("/hostUpdate")
-    public ModelAndView hostUpdate(ModelAndView mv, long rid) {
-       log.info("[ReservationRestController -> hostUpdate È£½ºÆ® ¿¹¾à ¼ö¶ô -> ¾Ë¸² ±â´É]");
-       reservservice.hostUpdateS(rid);
-       mv.addObject("rid", rid);
-       log.info("##ReservationRestController updateRaccept ¿Ï·á!!!! ");
-       mv.setViewName("redirect:/mypage/accessPage");
-       return mv;
-    }
-    
+	 * í˜¸ìŠ¤íŠ¸ ì˜ˆì•½ ìˆ˜ë½ ì²˜ë¦¬
+	 * 
+	 * @param long rid
+	 * @return ModelAndView
+	 */
+	@PostMapping("/hostUpdate")
+	public ModelAndView hostUpdate(ModelAndView mv, long rid) {
+		log.info("[ReservationRestController -> hostUpdate í˜¸ìŠ¤íŠ¸ ì˜ˆì•½ ìˆ˜ë½ -> ì•Œë¦¼ ê¸°ëŠ¥]");
+		reservservice.hostUpdateS(rid);
+		mv.addObject("rid", rid);
+		log.info("##ReservationRestController updateRaccept ï¿½Ï·ï¿½!!!! ");
+		mv.setViewName("redirect:/mypage/accessPage");
+		return mv;
+	}
+
     /**
-     * °Ô½ºÆ® ¿¹¾à ¼ö¶ô Ã³¸®
+     * ê²ŒìŠ¤íŠ¸ ì˜ˆì•½ ìˆ˜ë½ ì²˜ë¦¬
      * @param long rid
      * @return ModelAndView
      */
-    @PostMapping("/guestUpdate")
-    public ModelAndView guestUpdate(ModelAndView mv, Reservation reservation) {
-       log.info("[ReservationRestController -> guestUpdate °Ô½ºÆ® -> ¾Ë¸² ±â´É ]");
-       log.info("reservation : "+ reservation);
-       reservservice.guestUpdateS(reservation);
-       mv.addObject("rid", reservation.getRid());
-       log.info("##ReservationRestController guestUpdate ¿Ï·á!!!! ");
-       mv.setViewName("redirect: /mypage/accessPage");
-       return mv;
-    }
+	@PostMapping("/guestUpdate")
+	public ModelAndView guestUpdate(ModelAndView mv, Reservation reservation) {
+		log.info("[ReservationRestController -> guestUpdate ê²ŒìŠ¤íŠ¸ -> ì•Œë¦¼ ê¸°ëŠ¥ ]");
+		log.info("reservation : " + reservation);
+		reservservice.guestUpdateS(reservation);
+		mv.addObject("rid", reservation.getRid());
+		log.info("##ReservationRestController guestUpdate ï¿½Ï·ï¿½!!!! ");
+		mv.setViewName("redirect: /mypage/accessPage");
+		return mv;
+	}
 }

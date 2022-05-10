@@ -21,13 +21,13 @@ import yourstay.md.service.ReviewService;
 /**
  * packageName : yourstay.md.controller
  * fileName : ReviewRestController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ý¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class ReviewRestController {
@@ -37,14 +37,13 @@ public class ReviewRestController {
 	ReviewService reviewService;
 
 	/**
-     * Âò ¸ñ·Ï Ãß°¡  ( DTO ·Î ¿äÃ» ¹Þ´Â °æ¿ì )
+     * ì°œ ëª©ë¡ ì¶”ê°€  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param WishListVO wishlistvo
      * @return String
      */
 	@PostMapping(value="/registerReview")
     public ModelAndView addreview(reviewVO reviewVo, MultipartHttpServletRequest mpRequest)throws Exception {
-       //ÀÛÀº¹Ì¼Ç: (¸ÖÆ¼ÆÄÆ®¾÷·Îµå) ±¸Çö! 
-      log.info("MypageController -> addreview ¿äÃ»");
+      log.info("MypageController -> addreview");
       log.info("MypageController -> addreview reviewVo: "+ reviewVo.getReview());
       fileService.write(reviewVo, mpRequest);
       ModelAndView mv = new ModelAndView();

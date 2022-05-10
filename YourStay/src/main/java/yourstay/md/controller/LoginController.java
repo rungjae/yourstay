@@ -29,13 +29,13 @@ import static yourstay.md.domain.LoginConst.*;
 /**
  * packageName : yourstay.md.controller
  * fileName : LoginController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ý¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class LoginController {
@@ -46,14 +46,14 @@ public class LoginController {
 	
 	@GetMapping(value="/loginPage")
     public ModelAndView loginPage(ModelAndView mv){
-        log.info("Logincontroller -> loginPage ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
+        log.info("Logincontroller -> loginPage ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½Ã»");
         mv.setViewName("login/loginPage");
         return mv;
     }
 	
 	@GetMapping("logout.do")
 	public String logout(HttpSession session) {
-		log.info("·Î±×¾Æ¿ô ¼¼¼Ç nullÃ³¸®");
+		log.info("ï¿½Î±×¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ nullÃ³ï¿½ï¿½");
 //		session.setAttribute("memail", null);
 //		session.setAttribute("mpwd", null);
 		session.invalidate();
@@ -61,7 +61,7 @@ public class LoginController {
 	}
 	@GetMapping(value="/joinPage")
     public ModelAndView requestJoin(ModelAndView mv){
-        log.info("Logincontroller -> requestLogin ·Î±×ÀÎ ½Ãµµ ¿äÃ»");
+        log.info("Logincontroller -> requestLogin ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ãµï¿½ ï¿½ï¿½Ã»");
         mv.setViewName("login/joinPage");
         return mv;
     }

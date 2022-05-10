@@ -23,13 +23,13 @@ import yourstay.md.service.SearchService;
 /**
  * packageName : yourstay.md.controller
  * fileName : MainController
- * author : kosmo 3∆¿
+ * author : kosmo 3ÌåÄ
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3∆¿             √÷√  ª˝º∫
+ * Mar 14, 2022          kosmo 3ÌåÄ             ÏµúÏ¥à ÏÉùÏÑ±
  */
 
 public class MainController {
@@ -47,9 +47,9 @@ public class MainController {
          MemberVO mvo = (MemberVO)session.getAttribute("loginOkUser");
          List<Reservation> reservation = reservservice.findReservationMseqS(mvo.getMseq());
           rid = reservation.get(0).getRid();
-         Long check = reservservice.checkView(mvo.getMseq()); // »£Ω∫∆Æ æÀ∏≤
+         Long check = reservservice.checkView(mvo.getMseq()); // »£ÔøΩÔøΩ∆Æ ÔøΩÀ∏ÔøΩ
          mv.addObject("check", check);
-         Long check2 = reservservice.checkView2(mvo.getMseq()); // ∞‘Ω∫∆Æ æÀ∏≤
+         Long check2 = reservservice.checkView2(mvo.getMseq()); // ÔøΩ‘ΩÔøΩ∆Æ ÔøΩÀ∏ÔøΩ
         mv.addObject("check2", check2);
       }
       log.info("MainController index: "+vo);

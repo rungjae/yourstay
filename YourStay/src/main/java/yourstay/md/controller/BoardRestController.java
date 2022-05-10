@@ -19,21 +19,21 @@ import yourstay.md.service.BoardService;
 /**
  * packageName : yourstay.md.controller
  * fileName : BoardRestController
- * author : kosmo 3ÆÀ
+ * author : kosmo 3íŒ€
  * date : Mar 14, 2022
  * description :
  * ===========================================================
  * DATE                  AUTHOR                  NOTE
  * -----------------------------------------------------------
- * Mar 14, 2022          kosmo 3ÆÀ             ÃÖÃÊ »ı¼º
+ * Mar 14, 2022          kosmo 3íŒ€             ìµœì´ˆ ìƒì„±
  */
 
 public class BoardRestController {
 	@Autowired
 	private BoardService boardService;
 	
-    /**
-     * °øÁö»çÇ× µî·Ï  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+	 /**
+     * ê³µì§€ì‚¬í•­ ë“±ë¡  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param Board Board
      * @return ModelAndView
      */
@@ -48,7 +48,7 @@ public class BoardRestController {
 	}
 	
     /**
-     * °øÁö»çÇ× ¼öÁ¤  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ê³µì§€ì‚¬í•­ ìˆ˜ì •  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param Board Board
      * @return ModelAndView
      */
@@ -63,7 +63,7 @@ public class BoardRestController {
 	}
 	
 	/**
-     * °øÁö»çÇ× »èÁ¦  ( DTO ·Î ¿äÃ» ¹Ş´Â °æ¿ì )
+     * ê³µì§€ì‚¬í•­ ì‚­ì œ  ( DTO ë¡œ ìš”ì²­ ë°›ëŠ” ê²½ìš° )
      * @param boardnum boardnum
      * @return ModelAndView
      */
